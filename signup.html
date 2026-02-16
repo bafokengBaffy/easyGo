@@ -321,7 +321,7 @@
 <body>
 <div class="signup-container">
     <div class="signup-card">
-        <!-- Header with step tracker -->
+        <!-- Header with step tracker (now only 2 steps) -->
         <div class="signup-header">
             <div class="brand-area">
                 <img src="https://img.icons8.com/fluency/48/000000/car.png" alt="EasyGo">
@@ -331,18 +331,17 @@
                 <span class="step-badge" id="step1Badge">1</span>
                 <span class="step-line"></span>
                 <span class="step-badge" id="step2Badge">2</span>
-                <span class="step-line"></span>
-                <span class="step-badge" id="step3Badge">3</span>
+                <!-- step line and badge 3 removed -->
             </div>
         </div>
 
-        <!-- STEP 1 – Role selection -->
+        <!-- STEP 1 – Role selection (Client / Driver) -->
         <div id="step1" class="step-pane">
             <div class="selector-title"><i class="fa-regular fa-hand-point-right" style="margin-right: 10px;"></i>First, tell us your role</div>
             <div class="role-cards">
-                <div class="role-card selected" data-role="rider" id="roleRider">
+                <div class="role-card selected" data-role="client" id="roleClient">
                     <i class="fas fa-user"></i>
-                    <h3>Rider</h3>
+                    <h3>Client</h3>
                     <p>I need rides</p>
                 </div>
                 <div class="role-card" data-role="driver" id="roleDriver">
@@ -357,9 +356,9 @@
             </div>
         </div>
 
-        <!-- STEP 2 – Account credentials -->
+        <!-- STEP 2 – Account credentials + final details (merged) -->
         <div id="step2" class="step-pane hidden">
-            <div class="selector-title"><i class="fa-regular fa-envelope" style="margin-right: 10px;"></i>Step 2 — account credentials</div>
+            <div class="selector-title"><i class="fa-regular fa-envelope" style="margin-right: 10px;"></i>Complete your profile</div>
             <form id="step2Form">
                 <div class="input-group">
                     <div class="input-label"><i class="fa-regular fa-user"></i> Full name</div>
@@ -386,49 +385,42 @@
                         <input type="password" class="input-field" id="confirmPassword" placeholder="re-enter">
                     </div>
                 </div>
-            </form>
-            <div style="display: flex; gap: 1rem; margin-top: 1.8rem;">
-                <button class="btn btn-secondary" id="backToStep1Btn" style="flex:1;"><i class="fa-solid fa-arrow-left"></i> Back</button>
-                <button class="btn" id="gotoStep3Btn" style="flex:2;">Continue <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
 
-        <!-- STEP 3 – Final details -->
-        <div id="step3" class="step-pane hidden">
-            <div class="selector-title"><i class="fa-regular fa-circle-check" style="margin-right: 10px;"></i>Final details</div>
-            <div class="input-group">
-                <div class="input-label"><i class="fa-regular fa-building"></i> City</div>
-                <select class="input-field" id="city">
-                    <option value="" disabled selected>Select your city</option>
-                    <option value="Johannesburg">Johannesburg</option>
-                    <option value="Cape Town">Cape Town</option>
-                    <option value="Durban">Durban</option>
-                    <option value="Pretoria">Pretoria</option>
-                    <option value="Port Elizabeth">Port Elizabeth</option>
-                </select>
-            </div>
+                <!-- City field (previously step3) -->
+                <div class="input-group">
+                    <div class="input-label"><i class="fa-regular fa-building"></i> City</div>
+                    <select class="input-field" id="city">
+                        <option value="" disabled selected>Select your city</option>
+                        <option value="Johannesburg">Johannesburg</option>
+                        <option value="Cape Town">Cape Town</option>
+                        <option value="Durban">Durban</option>
+                        <option value="Pretoria">Pretoria</option>
+                        <option value="Port Elizabeth">Port Elizabeth</option>
+                    </select>
+                </div>
 
-            <!-- Driver extra fields -->
-            <div id="driverExtraFields" class="driver-extra" style="display: none;">
-                <div class="double-group">
-                    <div class="input-group">
-                        <div class="input-label"><i class="fa-regular fa-car"></i> Vehicle model</div>
-                        <input type="text" class="input-field" id="vehicle" placeholder="Toyota Corolla">
-                    </div>
-                    <div class="input-group">
-                        <div class="input-label"><i class="fa-regular fa-id-card"></i> License plate</div>
-                        <input type="text" class="input-field" id="license" placeholder="GP 123-456">
+                <!-- Driver extra fields -->
+                <div id="driverExtraFields" class="driver-extra" style="display: none;">
+                    <div class="double-group">
+                        <div class="input-group">
+                            <div class="input-label"><i class="fa-regular fa-car"></i> Vehicle model</div>
+                            <input type="text" class="input-field" id="vehicle" placeholder="Toyota Corolla">
+                        </div>
+                        <div class="input-group">
+                            <div class="input-label"><i class="fa-regular fa-id-card"></i> License plate</div>
+                            <input type="text" class="input-field" id="license" placeholder="GP 123-456">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="checkbox-row">
-                <input type="checkbox" id="termsCheckbox">
-                <label for="termsCheckbox">I agree to the <a href="#">Terms</a> and <a href="#">Privacy</a></label>
-            </div>
+                <div class="checkbox-row">
+                    <input type="checkbox" id="termsCheckbox">
+                    <label for="termsCheckbox">I agree to the <a href="#">Terms</a> and <a href="#">Privacy</a></label>
+                </div>
+            </form>
 
-            <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                <button class="btn btn-secondary" id="backToStep2Btn" style="flex:1;"><i class="fa-solid fa-arrow-left"></i> Back</button>
+            <div style="display: flex; gap: 1rem; margin-top: 1.8rem;">
+                <button class="btn btn-secondary" id="backToStep1Btn" style="flex:1;"><i class="fa-solid fa-arrow-left"></i> Back</button>
                 <button class="btn" id="finishSignupBtn" style="flex:2;">Create account <i class="fa-regular fa-circle-check"></i></button>
             </div>
 
@@ -445,18 +437,14 @@
         // DOM elements
         const step1 = document.getElementById('step1');
         const step2 = document.getElementById('step2');
-        const step3 = document.getElementById('step3');
 
         const step1Badge = document.getElementById('step1Badge');
         const step2Badge = document.getElementById('step2Badge');
-        const step3Badge = document.getElementById('step3Badge');
 
-        const roleRider = document.getElementById('roleRider');
+        const roleClient = document.getElementById('roleClient');
         const roleDriver = document.getElementById('roleDriver');
         const gotoStep2Btn = document.getElementById('gotoStep2Btn');
         const backToStep1Btn = document.getElementById('backToStep1Btn');
-        const gotoStep3Btn = document.getElementById('gotoStep3Btn');
-        const backToStep2Btn = document.getElementById('backToStep2Btn');
         const finishSignupBtn = document.getElementById('finishSignupBtn');
 
         const driverExtra = document.getElementById('driverExtraFields');
@@ -473,74 +461,69 @@
         const termsCheckbox = document.getElementById('termsCheckbox');
 
         // State
-        let selectedRole = 'rider';
+        let selectedRole = 'client';   // default client
 
-        // Function to update step display
+        // Function to update step display (only 2 steps)
         function showStep(step) {
             step1.classList.add('hidden');
             step2.classList.add('hidden');
-            step3.classList.add('hidden');
             
             if (step === 1) step1.classList.remove('hidden');
             if (step === 2) step2.classList.remove('hidden');
-            if (step === 3) step3.classList.remove('hidden');
 
-            // Update badges
+            // Update badges for two steps
             step1Badge.classList.remove('active', 'completed');
             step2Badge.classList.remove('active', 'completed');
-            step3Badge.classList.remove('active', 'completed');
 
             if (step === 1) {
                 step1Badge.classList.add('active');
                 step1Badge.textContent = '1';
                 step2Badge.textContent = '2';
-                step3Badge.textContent = '3';
             } else if (step === 2) {
                 step1Badge.classList.add('completed');
                 step1Badge.innerHTML = '<i class="fa-solid fa-check" style="font-size:0.8rem;"></i>';
                 step2Badge.classList.add('active');
                 step2Badge.textContent = '2';
-                step3Badge.textContent = '3';
-            } else if (step === 3) {
-                step1Badge.classList.add('completed');
-                step1Badge.innerHTML = '<i class="fa-solid fa-check" style="font-size:0.8rem;"></i>';
-                step2Badge.classList.add('completed');
-                step2Badge.innerHTML = '<i class="fa-solid fa-check" style="font-size:0.8rem;"></i>';
-                step3Badge.classList.add('active');
-                step3Badge.textContent = '3';
             }
         }
 
-        // Set role function
+        // Set role function (client/driver)
         function setRole(role) {
             selectedRole = role;
-            if (role === 'rider') {
-                roleRider.classList.add('selected');
+            if (role === 'client') {
+                roleClient.classList.add('selected');
                 roleDriver.classList.remove('selected');
                 driverExtra.style.display = 'none';
             } else {
                 roleDriver.classList.add('selected');
-                roleRider.classList.remove('selected');
+                roleClient.classList.remove('selected');
                 driverExtra.style.display = 'block';
             }
         }
 
         // Role click handlers
-        roleRider.addEventListener('click', () => setRole('rider'));
+        roleClient.addEventListener('click', () => setRole('client'));
         roleDriver.addEventListener('click', () => setRole('driver'));
 
-        // Validation for step 2
-        function isStep2Valid() {
+        // Validation for final signup (all required fields)
+        function isFormValid() {
             if (!fullName.value.trim()) { alert('Please enter your full name'); return false; }
             if (!email.value.trim() || !email.value.includes('@')) { alert('A valid email is required'); return false; }
             if (!phone.value.trim()) { alert('Phone number is required'); return false; }
             if (!password.value || password.value.length < 8) { alert('Password must be at least 8 characters'); return false; }
             if (password.value !== confirmPassword.value) { alert('Passwords do not match'); return false; }
+            if (!city.value) { alert('Please select your city'); return false; }
+            if (selectedRole === 'driver') {
+                if (!vehicle.value.trim()) { alert('Vehicle model is required for drivers'); return false; }
+                if (!license.value.trim()) { alert('License plate is required for drivers'); return false; }
+            }
+            if (!termsCheckbox.checked) { alert('You must agree to the Terms and Privacy policy'); return false; }
             return true;
         }
 
-        // Navigation handlers
+        // Navigation
         gotoStep2Btn.addEventListener('click', () => {
+            // Optional: you could validate role selection, but it's always selected
             showStep(2);
         });
 
@@ -548,25 +531,11 @@
             showStep(1);
         });
 
-        gotoStep3Btn.addEventListener('click', () => {
-            if (!isStep2Valid()) return;
-            showStep(3);
-        });
-
-        backToStep2Btn.addEventListener('click', () => {
-            showStep(2);
-        });
-
-        // Final signup
+        // Final signup (now from step 2)
         finishSignupBtn.addEventListener('click', (e) => {
             e.preventDefault();
 
-            if (!city.value) { alert('Please select your city'); return; }
-            if (selectedRole === 'driver') {
-                if (!vehicle.value.trim()) { alert('Vehicle model is required for drivers'); return; }
-                if (!license.value.trim()) { alert('License plate is required for drivers'); return; }
-            }
-            if (!termsCheckbox.checked) { alert('You must agree to the Terms and Privacy policy'); return; }
+            if (!isFormValid()) return;
 
             const userData = {
                 name: fullName.value.trim(),
@@ -591,23 +560,34 @@
             }, 1500);
         });
 
-        // Check for stored user type from homepage
+        // Check for stored user type from homepage (support both 'rider' and 'client' legacy)
         const storedUserType = localStorage.getItem('selectedUserType');
         const skipToStep = localStorage.getItem('skipToStep');
         
-        if (storedUserType && (storedUserType === 'rider' || storedUserType === 'driver')) {
+        // Map 'rider' to 'client' if present
+        let effectiveRole = storedUserType;
+        if (effectiveRole === 'rider') effectiveRole = 'client';
+
+        if (effectiveRole && (effectiveRole === 'client' || effectiveRole === 'driver')) {
             // Set the role
-            setRole(storedUserType);
+            setRole(effectiveRole);
             
             // Clear localStorage
             localStorage.removeItem('selectedUserType');
             localStorage.removeItem('skipToStep');
             
-            // Skip to step 2
+            // Skip to step 2 (merged details)
             showStep(2);
         } else {
-            // Default to step 1
-            setRole('rider');
+            // Default to step 1 with client selected
+            setRole('client');
+            showStep(1);
+        }
+
+        // Ensure step badges are correct on page load
+        // (showStep is already called above, but double-check if no stored user)
+        if (!effectiveRole) {
+            setRole('client');
             showStep(1);
         }
     })();
