@@ -59,6 +59,40 @@
             font-size: 14px;
         }
         
+        .filter-btn {
+            background: white;
+            color: #667eea;
+            border: 1px solid #667eea;
+            border-radius: 8px;
+            padding: 8px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        
+        .filter-btn:hover {
+            background: #667eea10;
+        }
+        
+        .export-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        
+        .export-btn:hover {
+            background: #218838;
+        }
+        
         .add-btn {
             background: #667eea;
             color: white;
@@ -88,6 +122,18 @@
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
         }
         
         .stat-card h3 {
@@ -101,6 +147,149 @@
             font-weight: bold;
             color: #667eea;
             margin-bottom: 5px;
+        }
+        
+        .stat-trend-up {
+            color: #28a745;
+            font-size: 12px;
+        }
+        
+        .stat-trend-down {
+            color: #dc3545;
+            font-size: 12px;
+        }
+        
+        .filter-section {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .filter-section.show {
+            display: block;
+        }
+        
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .filter-group label {
+            font-size: 12px;
+            color: #666;
+            font-weight: 600;
+        }
+        
+        .filter-group input, .filter-group select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .filter-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        
+        .apply-filter-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+        
+        .clear-filter-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+        
+        .priority-high {
+            background: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .priority-medium {
+            background: #ffc107;
+            color: #212529;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .priority-low {
+            background: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .status-open {
+            background: #cce5ff;
+            color: #004085;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .status-in-progress {
+            background: #fff3cd;
+            color: #856404;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .status-resolved {
+            background: #d4edda;
+            color: #155724;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .status-closed {
+            background: #e2e3e5;
+            color: #383d41;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
         }
         
         .data-table {
@@ -125,6 +314,28 @@
             color: #333;
         }
         
+        .table-tabs {
+            display: flex;
+            gap: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .table-tab {
+            padding: 8px 16px;
+            cursor: pointer;
+            color: #666;
+            font-weight: 600;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .table-tab.active {
+            background: #667eea;
+            color: white;
+        }
+        
         table {
             width: 100%;
             border-collapse: collapse;
@@ -143,24 +354,27 @@
             border-bottom: 1px solid #dee2e6;
         }
         
-        .status-active {
-            background: #d4edda;
-            color: #155724;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            display: inline-block;
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .status-pending {
-            background: #fff3cd;
-            color: #856404;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
+        .user-avatar-small {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .ticket-subject {
             font-weight: 600;
-            display: inline-block;
+            color: #333;
+        }
+        
+        .ticket-preview {
+            color: #666;
+            font-size: 12px;
         }
         
         .action-buttons {
@@ -187,8 +401,18 @@
             color: white;
         }
         
-        .action-btn.edit {
+        .action-btn.reply {
             background: #667eea;
+            color: white;
+        }
+        
+        .action-btn.resolve {
+            background: #28a745;
+            color: white;
+        }
+        
+        .action-btn.escalate {
+            background: #dc3545;
             color: white;
         }
         
@@ -211,6 +435,168 @@
             background: #667eea;
             color: white;
             border-color: #667eea;
+        }
+        
+        /* Chat/Conversation Styles */
+        .chat-container {
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .chat-message {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .chat-message.user {
+            flex-direction: row;
+        }
+        
+        .chat-message.support {
+            flex-direction: row-reverse;
+        }
+        
+        .chat-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+        
+        .chat-bubble {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            position: relative;
+        }
+        
+        .chat-message.user .chat-bubble {
+            background: white;
+            border: 1px solid #dee2e6;
+        }
+        
+        .chat-message.support .chat-bubble {
+            background: #667eea;
+            color: white;
+        }
+        
+        .chat-time {
+            font-size: 10px;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        .chat-input {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .chat-input textarea {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            resize: vertical;
+            min-height: 60px;
+        }
+        
+        .chat-input button {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+        
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .modal-overlay.show {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .modal-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-card h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .ticket-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .ticket-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        
+        .modal-actions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .modal-actions .cancel {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .modal-actions .save {
+            background: #667eea;
+            color: white;
+        }
+        
+        .modal-actions .resolve {
+            background: #28a745;
+            color: white;
         }
     </style>
 </head>
@@ -352,16 +738,20 @@
             <div class="page-header">
                 <div class="page-title">
                     <h1>Support Tickets</h1>
-                    <p>Manage and monitor all EasyGo Support Tickets.ToLower()</p>
+                    <p>Manage customer support requests and provide assistance</p>
                 </div>
                 <div class="action-bar">
                     <div class="search-box">
                         <i class="fas fa-search"></i>
-                        <input type="text" id="searchInput" placeholder="Search...">
+                        <input type="text" id="searchInput" placeholder="Search tickets by ID, user, subject...">
                     </div>
-                    <button class="add-btn" onclick="showAddModal()">
-                        <i class="fas fa-plus"></i>
-                        Add New
+                    <button class="filter-btn" id="filterBtn">
+                        <i class="fas fa-filter"></i>
+                        Filter
+                    </button>
+                    <button class="export-btn" id="exportBtn">
+                        <i class="fas fa-download"></i>
+                        Export
                     </button>
                 </div>
             </div>
@@ -369,75 +759,159 @@
             <!-- Stats Cards -->
             <div class="stats-cards">
                 <div class="stat-card">
-                    <h3>Total</h3>
-                    <div class="stat-number">1,234</div>
+                    <h3>Total Tickets</h3>
+                    <div class="stat-number" id="totalTickets">1,234</div>
+                    <span class="stat-trend-up"><i class="fas fa-arrow-up"></i> 8% from last week</span>
                 </div>
                 <div class="stat-card">
-                    <h3>Active</h3>
-                    <div class="stat-number">987</div>
+                    <h3>Open</h3>
+                    <div class="stat-number" id="openTickets">156</div>
+                    <span class="stat-trend-down">12 urgent</span>
                 </div>
                 <div class="stat-card">
-                    <h3>Pending</h3>
-                    <div class="stat-number">45</div>
+                    <h3>In Progress</h3>
+                    <div class="stat-number" id="inProgressTickets">89</div>
+                    <span class="stat-trend-up">+15 today</span>
                 </div>
                 <div class="stat-card">
-                    <h3>This Month</h3>
-                    <div class="stat-number">123</div>
+                    <h3>Avg Response</h3>
+                    <div class="stat-number" id="avgResponse">2.4h</div>
+                    <span class="stat-trend-down">-30m from target</span>
+                </div>
+            </div>
+            
+            <!-- Filter Section -->
+            <div class="filter-section" id="filterSection">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <select id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="open">Open</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Priority</label>
+                        <select id="priorityFilter">
+                            <option value="">All Priorities</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Category</label>
+                        <select id="categoryFilter">
+                            <option value="">All Categories</option>
+                            <option value="payment">Payment</option>
+                            <option value="trip">Trip Issue</option>
+                            <option value="account">Account</option>
+                            <option value="technical">Technical</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Date From</label>
+                        <input type="date" id="dateFrom">
+                    </div>
+                </div>
+                <div class="filter-actions">
+                    <button class="clear-filter-btn" id="clearFilter">Clear</button>
+                    <button class="apply-filter-btn" id="applyFilter">Apply Filters</button>
                 </div>
             </div>
             
             <!-- Data Table -->
             <div class="data-table">
                 <div class="table-header">
-                    <h2>Support Tickets List</h2>
+                    <h2>Support Tickets</h2>
                 </div>
                 
-                <table>
+                <div class="table-tabs">
+                    <div class="table-tab active" data-tab="all">All Tickets</div>
+                    <div class="table-tab" data-tab="open">Open</div>
+                    <div class="table-tab" data-tab="in-progress">In Progress</div>
+                    <div class="table-tab" data-tab="resolved">Resolved</div>
+                </div>
+                
+                <table id="ticketsTable">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
+                            <th>Ticket ID</th>
+                            <th>User</th>
+                            <th>Subject</th>
+                            <th>Category</th>
+                            <th>Priority</th>
                             <th>Status</th>
-                            <th>Date</th>
+                            <th>Created</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>#001</td>
-                            <td>Sample Item 1</td>
-                            <td><span class="status-active">Active</span></td>
-                            <td>2026-02-16</td>
-                            <td>
-                                <div class="action-buttons">
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn edit">Edit</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>#002</td>
-                            <td>Sample Item 2</td>
-                            <td><span class="status-pending">Pending</span></td>
-                            <td>2026-02-16</td>
-                            <td>
-                                <div class="action-buttons">
-                                    <button class="action-btn view">View</button>
-                                    <button class="action-btn edit">Edit</button>
-                                </div>
-                            </td>
-                        </tr>
+                    <tbody id="tableBody">
+                        <!-- Dynamically populated -->
                     </tbody>
                 </table>
                 
                 <!-- Pagination -->
-                <div class="pagination">
-                    <div class="page-item"><i class="fas fa-chevron-left"></i></div>
-                    <div class="page-item active">1</div>
-                    <div class="page-item">2</div>
-                    <div class="page-item">3</div>
-                    <div class="page-item"><i class="fas fa-chevron-right"></i></div>
+                <div class="pagination" id="pagination">
+                    <div class="page-item" id="prevPage"><i class="fas fa-chevron-left"></i></div>
+                    <div class="page-item active" id="page1">1</div>
+                    <div class="page-item" id="page2">2</div>
+                    <div class="page-item" id="page3">3</div>
+                    <div class="page-item" id="nextPage"><i class="fas fa-chevron-right"></i></div>
                 </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Ticket Conversation Modal -->
+    <div class="modal-overlay" id="ticketModal">
+        <div class="modal-card">
+            <h2 id="ticketSubject">Payment Issue - Trip #TR001</h2>
+            <div class="ticket-meta">
+                <span class="ticket-meta-item"><i class="fas fa-user"></i> <span id="ticketUser">John Doe</span></span>
+                <span class="ticket-meta-item"><i class="fas fa-tag"></i> <span id="ticketCategory">Payment</span></span>
+                <span class="ticket-meta-item"><i class="fas fa-flag"></i> <span id="ticketPriority" class="priority-high">High</span></span>
+                <span class="ticket-meta-item"><i class="fas fa-clock"></i> <span id="ticketTime">2 hours ago</span></span>
+            </div>
+            
+            <div class="chat-container" id="chatContainer">
+                <!-- Chat messages will be populated here -->
+                <div class="chat-message user">
+                    <img src="https://randomuser.me/api/portraits/men/1.jpg" class="chat-avatar">
+                    <div class="chat-bubble">
+                        I was charged twice for my trip #TR001. Please refund the duplicate payment.
+                        <div class="chat-time">14:30</div>
+                    </div>
+                </div>
+                <div class="chat-message support">
+                    <img src="https://randomuser.me/api/portraits/men/5.jpg" class="chat-avatar">
+                    <div class="chat-bubble">
+                        I apologize for the inconvenience. Let me check your transaction details.
+                        <div class="chat-time">14:35</div>
+                    </div>
+                </div>
+                <div class="chat-message support">
+                    <img src="https://randomuser.me/api/portraits/men/5.jpg" class="chat-avatar">
+                    <div class="chat-bubble">
+                        I can see the duplicate charge. I'll process a refund immediately.
+                        <div class="chat-time">14:38</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <textarea id="replyMessage" placeholder="Type your reply..."></textarea>
+                <button onclick="sendReply()">Send</button>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="cancel" onclick="closeTicketModal()">Close</button>
+                <button class="resolve" onclick="resolveTicket()">Mark as Resolved</button>
+                <button class="save" onclick="escalateTicket()">Escalate</button>
             </div>
         </div>
     </div>
@@ -445,15 +919,387 @@
     <script src="assets/js/auth.js"></script>
     <script src="assets/js/sidebar.js"></script>
     <script>
-        function showAddModal() {
-            alert('Add new functionality - To be implemented');
+        // Sample tickets data
+        const tickets = [
+            {
+                id: 'TK001',
+                userId: 'USR001',
+                userName: 'John Doe',
+                userAvatar: 'https://randomuser.me/api/portraits/men/1.jpg',
+                userType: 'passenger',
+                subject: 'Payment Issue - Duplicate Charge',
+                category: 'payment',
+                priority: 'high',
+                status: 'open',
+                created: '2026-02-16 14:30',
+                lastUpdate: '2026-02-16 14:30',
+                messages: [
+                    { sender: 'user', message: 'I was charged twice for my trip #TR001. Please refund the duplicate payment.', time: '14:30' }
+                ]
+            },
+            {
+                id: 'TK002',
+                userId: 'USR002',
+                userName: 'Jane Smith',
+                userAvatar: 'https://randomuser.me/api/portraits/women/2.jpg',
+                userType: 'driver',
+                subject: 'App Crashed During Trip',
+                category: 'technical',
+                priority: 'high',
+                status: 'in-progress',
+                created: '2026-02-16 13:15',
+                lastUpdate: '2026-02-16 13:45',
+                messages: [
+                    { sender: 'user', message: 'My app crashed while I was on a trip. I couldn\'t complete it.', time: '13:15' },
+                    { sender: 'support', message: 'I\'m sorry to hear that. Let me help you resolve this.', time: '13:30' },
+                    { sender: 'support', message: 'Can you provide your trip ID?', time: '13:45' }
+                ]
+            },
+            {
+                id: 'TK003',
+                userId: 'USR003',
+                userName: 'Bob Johnson',
+                userAvatar: 'https://randomuser.me/api/portraits/men/3.jpg',
+                userType: 'passenger',
+                subject: 'Driver Never Arrived',
+                category: 'trip',
+                priority: 'medium',
+                status: 'open',
+                created: '2026-02-16 12:00',
+                lastUpdate: '2026-02-16 12:00',
+                messages: [
+                    { sender: 'user', message: 'I booked a trip but the driver never showed up. I waited 20 minutes.', time: '12:00' }
+                ]
+            },
+            {
+                id: 'TK004',
+                userId: 'USR004',
+                userName: 'Alice Brown',
+                userAvatar: 'https://randomuser.me/api/portraits/women/4.jpg',
+                userType: 'driver',
+                subject: 'Account Verification Delay',
+                category: 'account',
+                priority: 'low',
+                status: 'resolved',
+                created: '2026-02-15 09:30',
+                lastUpdate: '2026-02-16 10:00',
+                messages: [
+                    { sender: 'user', message: 'My documents have been pending for 3 days. Please check.', time: '09:30' },
+                    { sender: 'support', message: 'Your documents have been verified. You can now start driving.', time: '10:00' }
+                ]
+            },
+            {
+                id: 'TK005',
+                userId: 'USR005',
+                userName: 'Charlie Wilson',
+                userAvatar: 'https://randomuser.me/api/portraits/men/5.jpg',
+                userType: 'passenger',
+                subject: 'Promo Code Not Working',
+                category: 'payment',
+                priority: 'low',
+                status: 'closed',
+                created: '2026-02-15 16:45',
+                lastUpdate: '2026-02-16 09:00',
+                messages: [
+                    { sender: 'user', message: 'The promo code WELCOME10 is not applying to my ride.', time: '16:45' },
+                    { sender: 'support', message: 'The promo code has expired. Here\'s a new one: EASYGO20', time: '09:00' }
+                ]
+            }
+        ];
+        
+        let currentTab = 'all';
+        let filteredTickets = [...tickets];
+        let currentPage = 1;
+        const rowsPerPage = 5;
+        let currentTicketId = null;
+        
+        // DOM Elements
+        const tableBody = document.getElementById('tableBody');
+        const searchInput = document.getElementById('searchInput');
+        const filterBtn = document.getElementById('filterBtn');
+        const filterSection = document.getElementById('filterSection');
+        const exportBtn = document.getElementById('exportBtn');
+        
+        // Modal elements
+        const ticketModal = document.getElementById('ticketModal');
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTable();
+            updateStats();
+            
+            // Tab switching
+            document.querySelectorAll('.table-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.table-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    currentTab = this.dataset.tab;
+                    filterTickets();
+                });
+            });
+            
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                filterTickets();
+            });
+            
+            // Filter toggle
+            filterBtn.addEventListener('click', function() {
+                filterSection.classList.toggle('show');
+            });
+            
+            // Apply filters
+            document.getElementById('applyFilter').addEventListener('click', function() {
+                applyFilters();
+            });
+            
+            // Clear filters
+            document.getElementById('clearFilter').addEventListener('click', function() {
+                document.getElementById('statusFilter').value = '';
+                document.getElementById('priorityFilter').value = '';
+                document.getElementById('categoryFilter').value = '';
+                document.getElementById('dateFrom').value = '';
+                filterTickets();
+            });
+            
+            // Export
+            exportBtn.addEventListener('click', exportToCSV);
+            
+            // Pagination
+            document.getElementById('prevPage').addEventListener('click', function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderTable();
+                }
+            });
+            
+            document.getElementById('nextPage').addEventListener('click', function() {
+                const maxPage = Math.ceil(filteredTickets.length / rowsPerPage);
+                if (currentPage < maxPage) {
+                    currentPage++;
+                    renderTable();
+                }
+            });
+        });
+        
+        function filterTickets() {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            filteredTickets = tickets.filter(ticket => {
+                const matchesSearch = searchTerm === '' || 
+                    ticket.id.toLowerCase().includes(searchTerm) ||
+                    ticket.userName.toLowerCase().includes(searchTerm) ||
+                    ticket.subject.toLowerCase().includes(searchTerm);
+                
+                const matchesTab = currentTab === 'all' || ticket.status === currentTab;
+                
+                return matchesSearch && matchesTab;
+            });
+            
+            currentPage = 1;
+            renderTable();
         }
         
-        function logout() {
+        function applyFilters() {
+            const status = document.getElementById('statusFilter').value;
+            const priority = document.getElementById('priorityFilter').value;
+            const category = document.getElementById('categoryFilter').value;
+            const dateFrom = document.getElementById('dateFrom').value;
+            
+            filteredTickets = tickets.filter(ticket => {
+                let matches = true;
+                
+                if (status && ticket.status !== status) matches = false;
+                if (priority && ticket.priority !== priority) matches = false;
+                if (category && ticket.category !== category) matches = false;
+                if (dateFrom) {
+                    const ticketDate = ticket.created.split(' ')[0];
+                    if (ticketDate < dateFrom) matches = false;
+                }
+                
+                return matches;
+            });
+            
+            currentPage = 1;
+            renderTable();
+            filterSection.classList.remove('show');
+        }
+        
+        function renderTable() {
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const pageData = filteredTickets.slice(start, end);
+            
+            if (pageData.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 40px;">No tickets found</td></tr>';
+            } else {
+                tableBody.innerHTML = pageData.map(ticket => {
+                    let priorityClass = 'priority-' + ticket.priority;
+                    let statusClass = 'status-' + ticket.status;
+                    
+                    return `
+                        <tr>
+                            <td><strong>${ticket.id}</strong></td>
+                            <td>
+                                <div class="user-info">
+                                    <img src="${ticket.userAvatar}" class="user-avatar-small">
+                                    <div>
+                                        ${ticket.userName}<br>
+                                        <small>${ticket.userType}</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="ticket-subject">${ticket.subject}</div>
+                                <div class="ticket-preview">${ticket.messages[0].message.substring(0, 50)}...</div>
+                            </td>
+                            <td>${ticket.category.charAt(0).toUpperCase() + ticket.category.slice(1)}</td>
+                            <td><span class="${priorityClass}">${ticket.priority.toUpperCase()}</span></td>
+                            <td><span class="${statusClass}">${ticket.status.replace('-', ' ').toUpperCase()}</span></td>
+                            <td>${ticket.created}</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn view" onclick="viewTicket('${ticket.id}')"><i class="fas fa-eye"></i></button>
+                                    <button class="action-btn reply" onclick="viewTicket('${ticket.id}')"><i class="fas fa-reply"></i></button>
+                                    ${ticket.status !== 'resolved' && ticket.status !== 'closed' ? 
+                                        `<button class="action-btn resolve" onclick="quickResolve('${ticket.id}')"><i class="fas fa-check"></i></button>` : ''}
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+            
+            updatePagination();
+        }
+        
+        function updateStats() {
+            const total = tickets.length;
+            const open = tickets.filter(t => t.status === 'open').length;
+            const inProgress = tickets.filter(t => t.status === 'in-progress').length;
+            
+            document.getElementById('totalTickets').textContent = total;
+            document.getElementById('openTickets').textContent = open;
+            document.getElementById('inProgressTickets').textContent = inProgress;
+            document.getElementById('avgResponse').textContent = '2.4h';
+        }
+        
+        function updatePagination() {
+            const maxPage = Math.ceil(filteredTickets.length / rowsPerPage);
+            
+            document.getElementById('page1').classList.remove('active');
+            document.getElementById('page2').classList.remove('active');
+            document.getElementById('page3').classList.remove('active');
+            
+            if (currentPage === 1) document.getElementById('page1').classList.add('active');
+            if (currentPage === 2) document.getElementById('page2').classList.add('active');
+            if (currentPage === 3) document.getElementById('page3').classList.add('active');
+            
+            document.getElementById('page2').style.display = maxPage >= 2 ? 'block' : 'none';
+            document.getElementById('page3').style.display = maxPage >= 3 ? 'block' : 'none';
+        }
+        
+        // Ticket functions
+        function viewTicket(id) {
+            const ticket = tickets.find(t => t.id === id);
+            if (ticket) {
+                currentTicketId = id;
+                document.getElementById('ticketSubject').textContent = ticket.subject;
+                document.getElementById('ticketUser').textContent = ticket.userName;
+                document.getElementById('ticketCategory').textContent = ticket.category.charAt(0).toUpperCase() + ticket.category.slice(1);
+                
+                const prioritySpan = document.getElementById('ticketPriority');
+                prioritySpan.textContent = ticket.priority.toUpperCase();
+                prioritySpan.className = 'priority-' + ticket.priority;
+                
+                document.getElementById('ticketTime').textContent = ticket.created;
+                
+                // Render chat messages
+                const chatContainer = document.getElementById('chatContainer');
+                chatContainer.innerHTML = ticket.messages.map(msg => `
+                    <div class="chat-message ${msg.sender}">
+                        <img src="${msg.sender === 'user' ? ticket.userAvatar : 'https://randomuser.me/api/portraits/men/5.jpg'}" class="chat-avatar">
+                        <div class="chat-bubble">
+                            ${msg.message}
+                            <div class="chat-time">${msg.time}</div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                ticketModal.classList.add('show');
+            }
+        }
+        
+        function quickResolve(id) {
+            if (confirm('Mark this ticket as resolved?')) {
+                alert(`Ticket ${id} marked as resolved`);
+            }
+        }
+        
+        function sendReply() {
+            const reply = document.getElementById('replyMessage').value;
+            if (reply.trim()) {
+                // Add reply to chat
+                const chatContainer = document.getElementById('chatContainer');
+                const now = new Date();
+                const timeStr = now.getHours() + ':' + now.getMinutes().toString().padStart(2, '0');
+                
+                chatContainer.innerHTML += `
+                    <div class="chat-message support">
+                        <img src="https://randomuser.me/api/portraits/men/5.jpg" class="chat-avatar">
+                        <div class="chat-bubble">
+                            ${reply}
+                            <div class="chat-time">${timeStr}</div>
+                        </div>
+                    </div>
+                `;
+                
+                document.getElementById('replyMessage').value = '';
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+        }
+        
+        function resolveTicket() {
+            if (confirm('Mark this ticket as resolved?')) {
+                alert('Ticket marked as resolved');
+                closeTicketModal();
+            }
+        }
+        
+        function escalateTicket() {
+            alert('Ticket escalated to senior support');
+        }
+        
+        function closeTicketModal() {
+            ticketModal.classList.remove('show');
+            currentTicketId = null;
+        }
+        
+        function exportToCSV() {
+            let csv = 'Ticket ID,User,User Type,Subject,Category,Priority,Status,Created,Last Update\n';
+            
+            filteredTickets.forEach(t => {
+                csv += `${t.id},${t.userName},${t.userType},${t.subject},${t.category},${t.priority},${t.status},${t.created},${t.lastUpdate}\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'support_tickets_export.csv';
+            a.click();
+        }
+        
+        // Original functions
+        window.showAddModal = function() {
+            alert('Create new ticket functionality - To be implemented');
+        };
+        
+        window.logout = function() {
             if (confirm('Are you sure you want to logout?')) {
                 window.location.href = 'login.html';
             }
-        }
+        };
     </script>
 </body>
 </html>
