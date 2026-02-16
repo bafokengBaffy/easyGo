@@ -1,0 +1,28 @@
+﻿{
+    "rides": [
+        {
+            "id": "R001",
+            "rider": "Thabo Nkosi",
+            "driver": "Sipho Dlamini",
+            "pickup": "Sandton City, Johannesburg",
+            "dropoff": "OR Tambo International Airport",
+            "distance": "25 km",
+            "fare": 350.00,
+            "status": "completed",
+            "date": "2024-11-20T09:30:00",
+            "rating": 5
+        },
+        {
+            "id": "R002",
+            "rider": "Lerato Molefe",
+            "driver": "Nomsa Zwane",
+            "pickup": "Gateway Theatre, Durban",
+            "dropoff": "Umhlanga Ridge",
+            "distance": "8 km",
+            "fare": 120.00,
+            "status": "completed",
+            "date": "2024-11-20T14:15:00",
+            "rating": 4
+        }
+    ]
+}

@@ -1,0 +1,122 @@
+﻿=========================================
+📋 EASYGO DETAILED FILE LISTING
+=========================================
+Date: 2026-02-16 12:58:56
+Path: C:\Users\liteboho\easygo-webapp
+.hintrc
+  ├── Size: 0.09 KB
+  ├── Modified: 2026-02-16 12:56
+  └── Type: .hintrc
+
+admin-credentials.txt
+  ├── Size: 1.49 KB
+  ├── Modified: 2026-02-16 12:37
+  └── Type: .txt
+
+admin-panel.html
+  ├── Size: 11.45 KB
+  ├── Modified: 2026-02-16 12:51
+  └── Type: .html
+
+assets\css\main.css
+  ├── Size: 2.92 KB
+  ├── Modified: 2026-02-16 12:36
+  └── Type: .css
+
+assets\css\responsive.css
+  ├── Size: 0.95 KB
+  ├── Modified: 2026-02-16 12:14
+  └── Type: .css
+
+assets\css\sidebar.css
+  ├── Size: 3.07 KB
+  ├── Modified: 2026-02-16 12:46
+  └── Type: .css
+
+assets\js\auth.js
+  ├── Size: 7.04 KB
+  ├── Modified: 2026-02-16 12:44
+  └── Type: .js
+
+assets\js\demo-data.js
+  ├── Size: 4.89 KB
+  ├── Modified: 2026-02-16 12:14
+  └── Type: .js
+
+assets\js\main.js
+  ├── Size: 2.98 KB
+  ├── Modified: 2026-02-16 12:22
+  └── Type: .js
+
+assets\js\sidebar.js
+  ├── Size: 3.18 KB
+  ├── Modified: 2026-02-16 12:46
+  └── Type: .js
+
+dashboard.html
+  ├── Size: 14.87 KB
+  ├── Modified: 2026-02-16 12:48
+  └── Type: .html
+
+data\mock-rides.json
+  ├── Size: 0.78 KB
+  ├── Modified: 2026-02-16 12:23
+  └── Type: .json
+
+data\mock-users.json
+  ├── Size: 0.95 KB
+  ├── Modified: 2026-02-16 12:23
+  └── Type: .json
+
+driver-dashboard.html
+  ├── Size: 16.71 KB
+  ├── Modified: 2026-02-16 12:49
+  └── Type: .html
+
+easygo-tree-20260216-125855.txt
+  ├── Size: 0.39 KB
+  ├── Modified: 2026-02-16 12:58
+  └── Type: .txt
+
+index.html
+  ├── Size: 14.74 KB
+  ├── Modified: 2026-02-16 12:37
+  └── Type: .html
+
+login.html
+  ├── Size: 9.37 KB
+  ├── Modified: 2026-02-16 12:43
+  └── Type: .html
+
+pages\about\about.html
+  ├── Size: 8.68 KB
+  ├── Modified: 2026-02-16 12:37
+  └── Type: .html
+
+ride-booking.html
+  ├── Size: 19.61 KB
+  ├── Modified: 2026-02-16 12:22
+  └── Type: .html
+
+signup.html
+  ├── Size: 11.16 KB
+  ├── Modified: 2026-02-16 12:43
+  └── Type: .html
+
+=========================================
+📊 SUMMARY STATISTICS
+=========================================
+Total Files: 20
+Total Size: 0.13 MB
+
+File Type Breakdown:
+- HTML Files: 8
+- CSS Files: 3
+- JavaScript Files: 4
+- JSON Files: 2
+- Image Files: 0
+- Other Files: 3
+
+=========================================
+✅ Listing generated: 2026-02-16 12:58:57
+=========================================

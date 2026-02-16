@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyGo - South Africa's Smart Transportation</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .cta-button {
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 18px;
+        }
+        
+        .cta-button.primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .feature-icon i {
+            font-size: 50px;
+            color: white;
+        }
+        
+        .stats {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .cities {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .city-tag {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 5px;
+            background: #f0f0f0;
+            border-radius: 30px;
+            font-size: 16px;
+            transition: all 0.3s;
+            cursor: default;
+        }
+        
+        .city-tag:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .how-it-works {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: white;
+            color: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            padding: 60px 20px 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 24px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .social-links a:hover {
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #555;
+            color: #ccc;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="https://img.icons8.com/fluency/48/000000/car.png" alt="EasyGo">
+                <span>EasyGo</span>
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="pages/about/about.html">About</a></li>
+                <li><a href="pages/support/contact.html">Contact</a></li>
+            </ul>
+            <div class="navbar-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Welcome to EasyGo</h1>
+            <p>South Africa's Smart Transportation Platform</p>
+            <p style="font-size: 18px; margin-bottom: 40px;">Safe • Reliable • Affordable</p>
+            <div class="cta-buttons">
+                <a href="signup.html?type=rider" class="cta-button primary">Ride with Us</a>
+                <a href="signup.html?type=driver" class="cta-button secondary">Drive with Us</a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="features" class="features">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px; color: #333; font-size: 36px;">Why Choose EasyGo?</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safe Rides</h3>
+                    <p>Background checked drivers and 24/7 support</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>On Time</h3>
+                    <p>Real-time tracking and estimated arrival times</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>Best Prices</h3>
+                    <p>Competitive rates with no hidden fees</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>We're always here to help you</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="stats">
+        <div class="container">
+            <h2 style="margin-bottom: 50px; font-size: 36px;">EasyGo in Numbers</h2>
+            <div class="stats-grid">
+                <div>
+                    <div class="stat-number">50,000+</div>
+                    <div>Happy Riders</div>
+                </div>
+                <div>
+                    <div class="stat-number">2,500+</div>
+                    <div>Active Drivers</div>
+                </div>
+                <div>
+                    <div class="stat-number">100,000+</div>
+                    <div>Trips Completed</div>
+                </div>
+                <div>
+                    <div class="stat-number">15+</div>
+                    <div>Cities in SA</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="how-it-works">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px; font-size: 36px;">How It Works</h2>
+            <p style="text-align: center; font-size: 18px; margin-bottom: 40px;">Get started with EasyGo in three simple steps</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Sign Up</h3>
+                    <p>Create your free account as a rider or driver</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Book or Drive</h3>
+                    <p>Request a ride or start accepting passengers</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Travel Safely</h3>
+                    <p>Enjoy your journey with EasyGo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cities">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px; color: #333; font-size: 36px;">We Operate in Major South African Cities</h2>
+            <div style="text-align: center;">
+                <span class="city-tag">Johannesburg</span>
+                <span class="city-tag">Cape Town</span>
+                <span class="city-tag">Durban</span>
+                <span class="city-tag">Pretoria</span>
+                <span class="city-tag">Port Elizabeth</span>
+                <span class="city-tag">Bloemfontein</span>
+                <span class="city-tag">East London</span>
+                <span class="city-tag">Pietermaritzburg</span>
+                <span class="city-tag">Polokwane</span>
+                <span class="city-tag">Nelspruit</span>
+                <span class="city-tag">Rustenburg</span>
+                <span class="city-tag">Kimberley</span>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>EasyGo</h4>
+                    <ul>
+                        <li><a href="pages/about/about.html">About Us</a></li>
+                        <li><a href="pages/about/careers.html">Careers</a></li>
+                        <li><a href="pages/about/blog.html">Blog</a></li>
+                        <li><a href="pages/about/press.html">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Safety</h4>
+                    <ul>
+                        <li><a href="pages/safety/guidelines.html">Safety Guidelines</a></li>
+                        <li><a href="pages/safety/drivers.html">For Drivers</a></li>
+                        <li><a href="pages/safety/riders.html">For Riders</a></li>
+                        <li><a href="pages/safety/emergency.html">Emergency</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="pages/support/contact.html">Contact Us</a></li>
+                        <li><a href="pages/support/faq.html">FAQ</a></li>
+                        <li><a href="pages/support/help.html">Help Center</a></li>
+                        <li><a href="pages/support/report.html">Report an Issue</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="pages/legal/terms.html">Terms of Service</a></li>
+                        <li><a href="pages/legal/privacy.html">Privacy Policy</a></li>
+                        <li><a href="pages/legal/cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 EasyGo. All rights reserved. | Operating throughout South Africa</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

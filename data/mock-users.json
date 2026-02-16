@@ -1,0 +1,37 @@
+﻿{
+    "users": [
+        {
+            "id": 1,
+            "name": "Thabo Nkosi",
+            "email": "thabo.nkosi@gmail.com",
+            "phone": "+27 71 234 5678",
+            "type": "rider",
+            "city": "Johannesburg",
+            "trips": 45,
+            "rating": 4.9,
+            "joined": "2024-01-15"
+        },
+        {
+            "id": 2,
+            "name": "Lerato Molefe",
+            "email": "lerato.m@webmail.co.za",
+            "phone": "+27 83 456 7890",
+            "type": "rider",
+            "city": "Durban",
+            "trips": 23,
+            "rating": 4.7,
+            "joined": "2024-02-20"
+        },
+        {
+            "id": 3,
+            "name": "Sipho Dlamini",
+            "email": "sipho.d@easygo.co.za",
+            "phone": "+27 82 345 6789",
+            "type": "driver",
+            "city": "Johannesburg",
+            "trips": 890,
+            "rating": 4.8,
+            "joined": "2024-01-10"
+        }
+    ]
+}
