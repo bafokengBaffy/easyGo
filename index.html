@@ -4,9 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EasyGo - South Africa's Smart Transportation</title>
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #1e3c72;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .navbar-menu a {
+            text-decoration: none;
+            color: #1e3c72;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar-menu a:hover {
+            color: #FFD166;
+        }
+
+        .navbar-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-outline {
+            border: 2px solid #1e3c72;
+            color: #1e3c72;
+        }
+
+        .btn-outline:hover {
+            background: #1e3c72;
+            color: white;
+        }
+
+        .btn-primary {
+            background: #FFD166;
+            color: #1e3c72;
+            border: 2px solid #FFD166;
+        }
+
+        .btn-primary:hover {
+            background: #1e3c72;
+            color: white;
+            border-color: #1e3c72;
+        }
+
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
@@ -44,6 +140,11 @@
             font-size: 18px;
             letter-spacing: 0.3px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
         }
         
         .cta-button.primary {
@@ -75,12 +176,17 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
         
+        /* Features */
         .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
             padding: 80px 20px;
             background: #f8f9fa;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
         
         .feature-card {
@@ -114,6 +220,7 @@
             color: white;
         }
         
+        /* Stats */
         .stats {
             background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
             color: white;
@@ -127,6 +234,7 @@
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
+            margin-top: 50px;
         }
         
         .stat-number {
@@ -136,32 +244,7 @@
             color: #FFD166;
         }
         
-        .cities {
-            padding: 80px 20px;
-            background: white;
-        }
-        
-        .city-tag {
-            display: inline-block;
-            padding: 12px 28px;
-            margin: 6px;
-            background: #f0f5fa;
-            border-radius: 40px;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s;
-            cursor: default;
-            color: #1e3c72;
-            border: 1px solid transparent;
-        }
-        
-        .city-tag:hover {
-            background: #1e3c72;
-            color: white;
-            transform: scale(1.05);
-            border-color: #FFD166;
-        }
-        
+        /* How it works */
         .how-it-works {
             padding: 80px 20px;
             background: linear-gradient(135deg, #f6f9fc 0%, #edf2f9 100%);
@@ -197,6 +280,34 @@
             margin: 0 auto 25px;
         }
         
+        /* Cities */
+        .cities {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .city-tag {
+            display: inline-block;
+            padding: 12px 28px;
+            margin: 6px;
+            background: #f0f5fa;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: default;
+            color: #1e3c72;
+            border: 1px solid transparent;
+        }
+        
+        .city-tag:hover {
+            background: #1e3c72;
+            color: white;
+            transform: scale(1.05);
+            border-color: #FFD166;
+        }
+        
+        /* Footer */
         footer {
             background: #0a1a2f;
             color: white;
@@ -261,6 +372,21 @@
             color: #b0c4de;
         }
         
+        /* Section titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1e3c72;
+            font-size: 36px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #666;
+        }
+        
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 36px;
@@ -281,24 +407,26 @@
                 max-width: 300px;
                 text-align: center;
             }
+            
+            .navbar-menu {
+                display: none;
+            }
         }
     </style>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container navbar-container">
             <a href="index.html" class="navbar-logo">
-                <img src="https://img.icons8.com/fluency/48/000000/car.png" alt="EasyGo">
+                <img src="https://img.icons8.com/fluency/48/000000/car.png" alt="EasyGo" width="40" height="40">
                 <span>EasyGo</span>
             </a>
             <ul class="navbar-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="#features">Features</a></li>
-                <li><a href="pages/about/about.html">About</a></li>
-                <li><a href="pages/support/contact.html">Contact</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#cities">Cities</a></li>
             </ul>
             <div class="navbar-buttons">
                 <a href="login.html" class="btn btn-outline">Login</a>
@@ -307,24 +435,28 @@
         </div>
     </nav>
 
-    <!-- Hero Section with new CTA buttons -->
+    <!-- Hero Section -->
     <div class="hero">
         <div class="container">
             <h1>Welcome to EasyGo</h1>
             <p>South Africa's Smart Transportation Platform</p>
             <p style="font-size: 18px; margin-bottom: 40px;">Safe • Reliable • Affordable</p>
             <div class="cta-buttons">
-                <a href="signup.html?type=rider" class="cta-button primary"><i class="fas fa-user-plus" style="margin-right: 8px;"></i>Get Started as a Rider</a>
-                <a href="signup.html?type=driver" class="cta-button secondary"><i class="fas fa-steering-wheel" style="margin-right: 8px;"></i>Become a Driver Partner</a>
+                <button onclick="handleUserTypeSelection('rider')" class="cta-button primary">
+                    <i class="fas fa-user-plus" style="margin-right: 8px;"></i>Rider
+                </button>
+                <button onclick="handleUserTypeSelection('driver')" class="cta-button secondary">
+                    <i class="fas fa-car" style="margin-right: 8px;"></i>Driver
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Rest of the page remains the same with improved styling -->
+    <!-- Features Section -->
     <div id="features" class="features">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px; color: #1e3c72; font-size: 36px;">Why Choose EasyGo?</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+            <h2 class="section-title">Why Choose EasyGo?</h2>
+            <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
@@ -357,9 +489,10 @@
         </div>
     </div>
     
+    <!-- Stats Section -->
     <div class="stats">
         <div class="container">
-            <h2 style="margin-bottom: 50px; font-size: 36px; color: white;">EasyGo in Numbers</h2>
+            <h2 style="margin-bottom: 20px; font-size: 36px; color: white;">EasyGo in Numbers</h2>
             <div class="stats-grid">
                 <div>
                     <div class="stat-number">50,000+</div>
@@ -381,10 +514,11 @@
         </div>
     </div>
     
-    <div class="how-it-works">
+    <!-- How It Works Section -->
+    <div id="how-it-works" class="how-it-works">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 20px; font-size: 36px;">How It Works</h2>
-            <p style="text-align: center; font-size: 18px; margin-bottom: 40px;">Get started with EasyGo in three simple steps</p>
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Get started with EasyGo in three simple steps</p>
             
             <div class="steps">
                 <div class="step">
@@ -406,9 +540,10 @@
         </div>
     </div>
     
-    <div class="cities">
+    <!-- Cities Section -->
+    <div id="cities" class="cities">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px; color: #1e3c72; font-size: 36px;">We Operate in Major South African Cities</h2>
+            <h2 class="section-title">We Operate in Major South African Cities</h2>
             <div style="text-align: center;">
                 <span class="city-tag">Johannesburg</span>
                 <span class="city-tag">Cape Town</span>
@@ -426,42 +561,43 @@
         </div>
     </div>
     
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
                     <h4>EasyGo</h4>
                     <ul>
-                        <li><a href="pages/about/about.html">About Us</a></li>
-                        <li><a href="pages/about/careers.html">Careers</a></li>
-                        <li><a href="pages/about/blog.html">Blog</a></li>
-                        <li><a href="pages/about/press.html">Press</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Safety</h4>
                     <ul>
-                        <li><a href="pages/safety/guidelines.html">Safety Guidelines</a></li>
-                        <li><a href="pages/safety/drivers.html">For Drivers</a></li>
-                        <li><a href="pages/safety/riders.html">For Riders</a></li>
-                        <li><a href="pages/safety/emergency.html">Emergency</a></li>
+                        <li><a href="#">Safety Guidelines</a></li>
+                        <li><a href="#">For Drivers</a></li>
+                        <li><a href="#">For Riders</a></li>
+                        <li><a href="#">Emergency</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Support</h4>
                     <ul>
-                        <li><a href="pages/support/contact.html">Contact Us</a></li>
-                        <li><a href="pages/support/faq.html">FAQ</a></li>
-                        <li><a href="pages/support/help.html">Help Center</a></li>
-                        <li><a href="pages/support/report.html">Report an Issue</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Report an Issue</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Legal</h4>
                     <ul>
-                        <li><a href="pages/legal/terms.html">Terms of Service</a></li>
-                        <li><a href="pages/legal/privacy.html">Privacy Policy</a></li>
-                        <li><a href="pages/legal/cookies.html">Cookie Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -480,6 +616,16 @@
         </div>
     </footer>
     
-    <script src="assets/js/main.js"></script>
+    <!-- JavaScript -->
+    <script>
+        function handleUserTypeSelection(userType) {
+            // Store the selected user type
+            localStorage.setItem('selectedUserType', userType);
+            localStorage.setItem('skipToStep', '2');
+            
+            // Redirect to signup page
+            window.location.href = 'signup.html';
+        }
+    </script>
 </body>
 </html>
