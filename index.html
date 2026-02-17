@@ -32,29 +32,31 @@
       padding: 0 2rem;
     }
 
-    /* ---------- brand variables ---------- */
+    /* ---------- brand variables (yellow dominant) ---------- */
     :root {
-      --gold: #F5C400;
+      --gold: #F5C400;        /* pure bright yellow */
       --black-dark: #111111;
       --black-medium: #1A1A1A;
       --white: #FFFFFF;
       --off-white: #F5F5F5;
       --shadow-sm: 0 15px 35px -8px rgba(0,0,0,0.08);
       --shadow-hover: 0 25px 45px -12px rgba(0,0,0,0.25);
-      --transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);  /* faster base transition */
+      --transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
     }
 
-    /* ---------- animations (faster) ---------- */
+    /* --- FAST color animation: YELLOW ⇄ LIGHT PINK --- */
+    @keyframes fastYellowPink {
+      0% { background-color: #F5C400; }      /* full yellow */
+      25% { background-color: #FFD966; }      /* light yellow */
+      50% { background-color: #FFB6C1; }      /* light pink */
+      75% { background-color: #FFCC99; }      /* peachy pink */
+      100% { background-color: #F5C400; }     /* back to yellow */
+    }
+
     @keyframes fadeUp {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    /* micro hover already uses 0.2s via var(--transition) */
 
     /* ---------- navbar (glass) ---------- */
     .navbar {
@@ -108,7 +110,7 @@
       width: 0%;
       height: 2.5px;
       background: var(--gold);
-      transition: width 0.2s ease; /* faster */
+      transition: width 0.2s ease;
     }
     .nav-links a:hover::after {
       width: 100%;
@@ -139,54 +141,41 @@
       background: var(--black-dark);
       color: white;
     }
-    /* --- login only — signup button removed, replaced by subtle signup link/icon --- */
-    .signup-link {
-      font-weight: 600;
-      color: var(--black-dark);
-      background: rgba(245,196,0,0.15);
-      padding: 0.5rem 1.2rem;
-      border-radius: 40px;
-      transition: var(--transition);
-      border: 1px solid transparent;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .signup-link i {
-      color: var(--gold);
-      font-size: 1rem;
-    }
-    .signup-link:hover {
-      background: var(--gold);
-      color: #111;
-      border-color: var(--gold);
-    }
-    .signup-link:hover i {
-      color: #111;
-    }
 
-    /* ---------- HERO (premium dark/gold gradient) ---------- */
+    /* ---------- HERO with FAST yellow/pink color animation ---------- */
     .hero {
-      background: linear-gradient(135deg, #111111 0%, #1A1A1A 55%, #F5C400 100%);
-      background-size: 200% 200%;
-      animation: gradientShift 8s ease infinite; /* faster cycle */
-      color: white;
+      /* base gradient, but we overlay a strong color animation */
+      background: #F5C400;  /* fallback yellow */
+      animation: fastYellowPink 3s ease infinite; /* FAST 3s cycle - very noticeable */
+      color: #111; /* dark text for readability on bright bg */
       padding: 6rem 0 10rem 0;
       clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
       position: relative;
+      transition: background-color 0.1s; /* extra smoothness */
+    }
+    /* add subtle dark overlay to keep text readable if needed */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.1);  /* very light dim */
+      pointer-events: none;
     }
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 70% 30%, rgba(245,196,0,0.12) 0%, transparent 60%);
+      background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.4) 0%, transparent 60%);
       pointer-events: none;
     }
+
     .hero-content {
       max-width: 800px;
       margin: 0 auto;
       text-align: center;
-      animation: fadeUp 0.6s ease forwards; /* faster */
+      animation: fadeUp 0.6s ease forwards;
+      position: relative;
+      z-index: 2;
     }
     .hero h1 {
       font-size: clamp(2.8rem, 8vw, 5rem);
@@ -194,16 +183,22 @@
       line-height: 1.1;
       letter-spacing: -0.02em;
       margin-bottom: 1.5rem;
+      color: #111; /* strong dark */
+      text-shadow: 0 2px 10px rgba(255,255,255,0.5);
     }
     .hero .highlight {
-      color: var(--gold);
-      text-shadow: 0 2px 20px rgba(245,196,0,0.4);
+      color: #111;  /* almost black for contrast */
+      background: rgba(255,255,240,0.3);
+      padding: 0 8px;
+      border-radius: 20px;
     }
     .hero p {
       font-size: 1.3rem;
-      opacity: 0.9;
+      opacity: 1;
       margin-bottom: 2rem;
-      font-weight: 350;
+      font-weight: 500;
+      color: #111;
+      text-shadow: 0 1px 4px rgba(255,255,255,0.5);
     }
     .cta-duo {
       display: flex;
@@ -216,7 +211,7 @@
       border-radius: 60px;
       font-weight: 700;
       font-size: 1.2rem;
-      transition: 0.15s ease; /* faster hover */
+      transition: 0.15s ease;
       display: inline-flex;
       align-items: center;
       gap: 12px;
@@ -225,26 +220,26 @@
       box-shadow: 0 20px 30px -12px rgba(0,0,0,0.35);
     }
     .cta-rider {
-      background: var(--gold);
-      color: #111;
-      border-color: var(--gold);
+      background: #111;
+      color: #F5C400;
+      border-color: #111;
     }
     .cta-rider:hover {
       background: transparent;
-      color: white;
-      border-color: white;
-      transform: scale(1.03); /* slightly less, but fast */
+      color: #111;
+      border-color: #111;
+      transform: scale(1.03);
     }
     .cta-driver {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.5);
       backdrop-filter: blur(10px);
-      border: 2px solid rgba(255,255,255,0.25);
-      color: white;
+      border: 2px solid #111;
+      color: #111;
     }
     .cta-driver:hover {
-      background: white;
-      color: #111;
-      border-color: white;
+      background: #111;
+      color: #F5C400;
+      border-color: #111;
       transform: scale(1.03);
     }
 
@@ -282,7 +277,7 @@
       border: 1px solid rgba(0,0,0,0.02);
     }
     .feature-card:hover {
-      transform: translateY(-8px); /* slightly less motion but faster */
+      transform: translateY(-8px);
       box-shadow: var(--shadow-hover);
     }
     .feature-icon {
@@ -347,7 +342,7 @@
       border-radius: 40px;
       padding: 3rem 2rem;
       text-align: center;
-      transition: 0.15s; /* faster */
+      transition: 0.15s;
     }
     .step:hover {
       background: #111;
@@ -470,7 +465,7 @@
 </head>
 <body>
 
-  <!-- ========== NAVBAR (login only + subtle signup hint) ========= -->
+  <!-- ========== NAVBAR (only login button) ========= -->
   <nav class="navbar">
     <div class="container navbar-container">
       <a href="index.html" class="logo">
@@ -484,13 +479,13 @@
         <a href="#">Safety</a>
       </div>
       <div class="nav-buttons">
-        <!-- ONLY login button (as requested). Signup is replaced by a small search-like hint -->
+        <!-- ONLY login button (signup removed, no extra link) -->
         <a href="login.html" class="btn btn-outline"><i class="far fa-user"></i> Log in</a>
-     </div>
+      </div>
     </div>
   </nav>
 
-  <!-- ========== HERO (faster animation) ========= -->
+  <!-- ========== HERO with FAST yellow ⇄ light pink animation ========= -->
   <section class="hero">
     <div class="container hero-content">
       <h1>
@@ -654,14 +649,13 @@
     </div>
   </footer>
 
-  <!-- script (same logic, faster feel) -->
   <script>
     function handleUser(type) {
       localStorage.setItem('easygo_user_type', type);
       localStorage.setItem('easygo_skip_to', 'step2');
       window.location.href = 'signup.html';
     }
-    // smooth scroll for anchor links (already smooth, keep)
+    // smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
@@ -674,7 +668,5 @@
       });
     });
   </script>
-
-  <!-- note: signup button removed, only login remains + search-like join link -->
 </body>
 </html>
