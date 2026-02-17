@@ -606,12 +606,11 @@
   <nav class="navbar">
     <div class="container navbar-container">
       <a href="index.html" class="logo">
-        <div class="logo-img-wrapper">
-          <img src="assets/images/WhatsApp Image 2026-02-16 at 15.01.44.jpeg" alt="EasyGo logo" 
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div >
+          <img src="assets/images/easy-Go-Upsaceld-noBG.png" style="width: 100px;" alt="easyGo logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <i class="fas fa-car" style="display: none; font-size: 2rem; color: #111;"></i>
         </div>
-        <span>easyGo</span>
+      
       </a>
       <div class="nav-links">
         <a href="#features">Features</a>
@@ -628,8 +627,8 @@
   <!-- ========== HERO with FAST yellow ⇄ pink ========= -->
   <section class="hero">
     <div class="container hero-content">
-      <h1><span class="highlight">Move</span> with <br>easyGo<span class="highlight"></span></h1>
-      <p>South Africa’s smart transportation — safe, reliable, and effortlessly premium.</p>
+      <h1><span class="">Move</span> with <br><img src="assets/images/easy-Go-Upsaceld-noBG.png" style="width: 400px; height: 100px;" alt="easyGo"><span class=""></span></h1>
+      <p>South Africa's smart transportation — safe, reliable, and effortlessly premium.</p>
       <div class="cta-duo">
         <!-- these buttons store role and redirect to signup page step2 -->
         <button onclick="handleUser('rider')" class="cta-btn cta-rider">
@@ -667,7 +666,7 @@
         <div class="feature-card">
           <div class="feature-icon"><i class="fas fa-headset"></i></div>
           <h3>24/7 Concierge</h3>
-          <p>We’re always awake. Chat or call, anytime.</p>
+          <p>We're always awake. Chat or call, anytime.</p>
         </div>
       </div>
     </div>
@@ -714,7 +713,7 @@
   <section id="cities" class="cities">
     <div class="container">
       <h2 class="section-title">We cover the nation</h2>
-      <p class="section-sub">From Gauteng to the Cape – we’re everywhere you need.</p>
+      <p class="section-sub">From Gauteng to the Cape – we're everywhere you need.</p>
       <div class="city-cloud">
         <span class="city-tag">Johannesburg</span>
         <span class="city-tag">Cape Town</span>
@@ -813,29 +812,33 @@
 
       function updatePrice() {
         if (currentView === 'rider') {
-          dynamicPrice.innerText = 'R 89';
-          priceNote.innerText = 'average trip · Johannesburg';
+          if (dynamicPrice) dynamicPrice.innerText = 'R 89';
+          if (priceNote) priceNote.innerText = 'average trip · Johannesburg';
         } else {
-          dynamicPrice.innerText = 'R 63';
-          priceNote.innerText = 'estimated driver payout (70%)';
+          if (dynamicPrice) dynamicPrice.innerText = 'R 63';
+          if (priceNote) priceNote.innerText = 'estimated driver payout (70%)';
         }
       }
-      toggleOptions.forEach(opt => {
-        opt.addEventListener('click', function() {
-          toggleOptions.forEach(o => o.classList.remove('active'));
-          this.classList.add('active');
-          currentView = this.dataset.view;
-          updatePrice();
+      
+      if (toggleOptions.length > 0) {
+        toggleOptions.forEach(opt => {
+          opt.addEventListener('click', function() {
+            toggleOptions.forEach(o => o.classList.remove('active'));
+            this.classList.add('active');
+            currentView = this.dataset.view;
+            updatePrice();
+          });
         });
-      });
+      }
+      
       // simulate surge
       document.getElementById('simulateTripBtn')?.addEventListener('click', function() {
         if (currentView === 'rider') {
-          dynamicPrice.innerText = 'R 145';
-          priceNote.innerText = 'surge pricing · 2.3x multiplier';
+          if (dynamicPrice) dynamicPrice.innerText = 'R 145';
+          if (priceNote) priceNote.innerText = 'surge pricing · 2.3x multiplier';
         } else {
-          dynamicPrice.innerText = 'R 101';
-          priceNote.innerText = 'surge earnings (higher)';
+          if (dynamicPrice) dynamicPrice.innerText = 'R 101';
+          if (priceNote) priceNote.innerText = 'surge earnings (higher)';
         }
         setTimeout(() => updatePrice(), 2000); // revert after 2s
       });
@@ -847,24 +850,30 @@
       const progressCircle = document.getElementById('progressCircle');
       let available = true;
 
-      toggleBtn.addEventListener('click', function() {
-        available = !available;
-        if (available) {
-          toggleBtn.classList.remove('off');
-          toggleBtn.innerHTML = '<i class="fas fa-toggle-on" style="font-size:2rem;"></i><span id="toggleStatus">You\'re available</span>';
-          toggleStatus.innerText = "You're available";
-          onlineCountSpan.innerText = '164'; // more online
-          progressCircle.style.background = 'conic-gradient(#F5C400 0deg 290deg, #333 290deg 360deg)';
-          progressCircle.innerText = '91%';
-        } else {
-          toggleBtn.classList.add('off');
-          toggleBtn.innerHTML = '<i class="fas fa-toggle-off" style="font-size:2rem;"></i><span id="toggleStatus">Unavailable</span>';
-          toggleStatus.innerText = "Unavailable";
-          onlineCountSpan.innerText = '147';
-          progressCircle.style.background = 'conic-gradient(#F5C400 0deg 210deg, #333 210deg 360deg)';
-          progressCircle.innerText = '67%';
-        }
-      });
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+          available = !available;
+          if (available) {
+            toggleBtn.classList.remove('off');
+            toggleBtn.innerHTML = '<i class="fas fa-toggle-on" style="font-size:2rem;"></i><span id="toggleStatus">You\'re available</span>';
+            if (toggleStatus) toggleStatus.innerText = "You're available";
+            if (onlineCountSpan) onlineCountSpan.innerText = '164'; // more online
+            if (progressCircle) {
+              progressCircle.style.background = 'conic-gradient(#F5C400 0deg 290deg, #333 290deg 360deg)';
+              progressCircle.innerText = '91%';
+            }
+          } else {
+            toggleBtn.classList.add('off');
+            toggleBtn.innerHTML = '<i class="fas fa-toggle-off" style="font-size:2rem;"></i><span id="toggleStatus">Unavailable</span>';
+            if (toggleStatus) toggleStatus.innerText = "Unavailable";
+            if (onlineCountSpan) onlineCountSpan.innerText = '147';
+            if (progressCircle) {
+              progressCircle.style.background = 'conic-gradient(#F5C400 0deg 210deg, #333 210deg 360deg)';
+              progressCircle.innerText = '67%';
+            }
+          }
+        });
+      }
 
       // ----- NEW FEATURE 3: city slider interactive (live counts) -----
       const cityItems = document.querySelectorAll('.city-slider-item');
@@ -881,10 +890,10 @@
             countSpan.innerText = old;
           }
           // optionally change driver online count
-          if (this.dataset.city === 'jhb') onlineCountSpan.innerText = '187';
-          else if (this.dataset.city === 'cpt') onlineCountSpan.innerText = '134';
-          else if (this.dataset.city === 'dur') onlineCountSpan.innerText = '93';
-          else if (this.dataset.city === 'pret') onlineCountSpan.innerText = '76';
+          if (this.dataset.city === 'jhb' && onlineCountSpan) onlineCountSpan.innerText = '187';
+          else if (this.dataset.city === 'cpt' && onlineCountSpan) onlineCountSpan.innerText = '134';
+          else if (this.dataset.city === 'dur' && onlineCountSpan) onlineCountSpan.innerText = '93';
+          else if (this.dataset.city === 'pret' && onlineCountSpan) onlineCountSpan.innerText = '76';
         });
       });
 

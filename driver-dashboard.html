@@ -101,6 +101,13 @@
             border-radius: 12px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .earning-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
         }
         
         .earning-card h3 {
@@ -122,6 +129,7 @@
             border-radius: 12px;
             margin-bottom: 30px;
             animation: pulse 2s infinite;
+            cursor: pointer;
         }
         
         @keyframes pulse {
@@ -158,6 +166,15 @@
             color: white;
             padding: 15px 40px;
             font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-accept:hover {
+            background: #218838;
+            transform: scale(1.05);
         }
         
         .btn-decline {
@@ -165,6 +182,15 @@
             color: white;
             padding: 15px 40px;
             font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-decline:hover {
+            background: #c82333;
+            transform: scale(1.05);
         }
         
         .active-ride {
@@ -201,6 +227,95 @@
         .welcome-banner h1 {
             font-size: 32px;
             margin-bottom: 10px;
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .quick-action-btn {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            width: 100%;
+        }
+        
+        .quick-action-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .quick-action-btn i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        
+        .quick-action-btn:hover i {
+            color: white;
+        }
+        
+        .recent-activity {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+        
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #667eea;
+        }
+        
+        .activity-details {
+            flex: 1;
+        }
+        
+        .activity-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .activity-time {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .activity-amount {
+            font-weight: bold;
+            color: #28a745;
         }
         
         @media (max-width: 768px) {
@@ -251,27 +366,45 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="driver-available-rides.html" class="nav-link">
                     <img src="https://img.icons8.com/ios-filled/50/000000/car.png" alt="Available Rides">
                     <span>Available Rides</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="driver-current-trip.html" class="nav-link">
                     <img src="https://img.icons8.com/ios-filled/50/000000/road.png" alt="Current Trip">
                     <span>Current Trip</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="driver-earnings.html" class="nav-link">
                     <img src="https://img.icons8.com/ios-filled/50/000000/money.png" alt="Earnings">
                     <span>Earnings</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="driver-profile.html" class="nav-link">
                     <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Profile">
                     <span>Profile</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="driver-vehicle.html" class="nav-link">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/car.png" alt="Vehicle">
+                    <span>Vehicle</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="driver-settings.html" class="nav-link">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/settings.png" alt="Settings">
+                    <span>Settings</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="driver-support.html" class="nav-link">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/support.png" alt="Support">
+                    <span>Support</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -291,6 +424,26 @@
                 <p id="userLocation">📍 Sandton, Johannesburg</p>
             </div>
             
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="quick-action-btn" onclick="window.location.href='driver-available-rides.html'">
+                    <i class="fas fa-car"></i>
+                    <div>Find Rides</div>
+                </button>
+                <button class="quick-action-btn" onclick="window.location.href='driver-earnings.html'">
+                    <i class="fas fa-money-bill"></i>
+                    <div>View Earnings</div>
+                </button>
+                <button class="quick-action-btn" onclick="window.location.href='driver-current-trip.html'">
+                    <i class="fas fa-road"></i>
+                    <div>Current Trip</div>
+                </button>
+                <button class="quick-action-btn" onclick="window.location.href='driver-profile.html'">
+                    <i class="fas fa-user"></i>
+                    <div>My Profile</div>
+                </button>
+            </div>
+            
             <!-- Status Bar -->
             <div class="status-bar">
                 <div class="status-toggle">
@@ -301,11 +454,11 @@
                     </label>
                     <span class="status-badge status-online" id="statusText">Online</span>
                 </div>
-                <div>
+                <div onclick="window.location.href='driver-available-rides.html'" style="cursor: pointer;">
                     <i class="fas fa-map-marker-alt" style="color: #667eea;"></i>
                     <span id="currentLocation">Sandton, Johannesburg</span>
                 </div>
-                <div>
+                <div onclick="window.location.href='driver-profile.html'" style="cursor: pointer;">
                     <i class="fas fa-star" style="color: #ffc107;"></i>
                     <span id="driverRating">Rating: 4.8 (890 trips)</span>
                 </div>
@@ -313,26 +466,26 @@
             
             <!-- Earnings Grid -->
             <div class="earnings-grid">
-                <div class="earning-card">
+                <div class="earning-card" onclick="window.location.href='driver-earnings.html?period=today'">
                     <h3>Today's Earnings</h3>
-                    <div class="amount">R 850</div>
+                    <div class="amount" id="todayEarnings">R 850</div>
                 </div>
-                <div class="earning-card">
+                <div class="earning-card" onclick="window.location.href='driver-earnings.html?period=week'">
                     <h3>This Week</h3>
-                    <div class="amount">R 4,250</div>
+                    <div class="amount" id="weekEarnings">R 4,250</div>
                 </div>
-                <div class="earning-card">
+                <div class="earning-card" onclick="window.location.href='driver-earnings.html?period=month'">
                     <h3>This Month</h3>
-                    <div class="amount">R 18,500</div>
+                    <div class="amount" id="monthEarnings">R 18,500</div>
                 </div>
-                <div class="earning-card">
+                <div class="earning-card" onclick="window.location.href='driver-profile.html'">
                     <h3>Total Trips</h3>
-                    <div class="amount">890</div>
+                    <div class="amount" id="totalTrips">890</div>
                 </div>
             </div>
             
             <!-- Ride Request (Active when online) -->
-            <div class="ride-request" id="rideRequest">
+            <div class="ride-request" id="rideRequest" onclick="showRideDetails()">
                 <h2>🚗 New Ride Request</h2>
                 <div class="request-details">
                     <div>
@@ -364,7 +517,7 @@
                         <strong>Fare:</strong> R 290
                     </div>
                 </div>
-                <div class="request-actions">
+                <div class="request-actions" onclick="event.stopPropagation()">
                     <button class="btn btn-accept" onclick="acceptRide()">
                         <i class="fas fa-check"></i> Accept Ride
                     </button>
@@ -375,7 +528,7 @@
             </div>
             
             <!-- Active Ride (Hidden by default) -->
-            <div class="active-ride" id="activeRide" style="display: none;">
+            <div class="active-ride" id="activeRide" style="display: none;" onclick="window.location.href='driver-current-trip.html'">
                 <h2>Current Trip</h2>
                 <div class="progress-bar">
                     <div class="progress-fill" id="tripProgress" style="width: 60%;"></div>
@@ -402,9 +555,58 @@
                         <strong>Est. Arrival:</strong> 20 min
                     </div>
                 </div>
-                <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="completeTrip()">
+                <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="event.stopPropagation(); completeTrip()">
                     <i class="fas fa-check-circle"></i> Complete Trip
                 </button>
+            </div>
+            
+            <!-- Recent Activity -->
+            <div class="recent-activity">
+                <h3>Recent Trips</h3>
+                
+                <div class="activity-item" onclick="window.location.href='driver-earnings.html'">
+                    <div class="activity-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="activity-details">
+                        <div class="activity-title">Trip to OR Tambo Airport</div>
+                        <div class="activity-time">Today, 10:30 AM</div>
+                    </div>
+                    <div class="activity-amount">+R 217.50</div>
+                </div>
+                
+                <div class="activity-item" onclick="window.location.href='driver-earnings.html'">
+                    <div class="activity-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="activity-details">
+                        <div class="activity-title">Trip to Fourways Mall</div>
+                        <div class="activity-time">Today, 9:15 AM</div>
+                    </div>
+                    <div class="activity-amount">+R 135.00</div>
+                </div>
+                
+                <div class="activity-item" onclick="window.location.href='driver-earnings.html'">
+                    <div class="activity-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="activity-details">
+                        <div class="activity-title">Trip to Lanseria Airport</div>
+                        <div class="activity-time">Yesterday, 8:45 PM</div>
+                    </div>
+                    <div class="activity-amount">+R 337.50</div>
+                </div>
+                
+                <div class="activity-item" onclick="window.location.href='driver-earnings.html'">
+                    <div class="activity-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="activity-details">
+                        <div class="activity-title">Trip to Waterfall City</div>
+                        <div class="activity-time">Yesterday, 6:30 PM</div>
+                    </div>
+                    <div class="activity-amount">+R 71.25</div>
+                </div>
             </div>
         </div>
     </div>
@@ -432,9 +634,20 @@
                 // Update stats based on user
                 if (user.name === 'Sipho Dlamini') {
                     document.getElementById('driverRating').textContent = 'Rating: 4.8 (890 trips)';
+                    document.getElementById('todayEarnings').textContent = 'R 850';
+                    document.getElementById('weekEarnings').textContent = 'R 4,250';
+                    document.getElementById('monthEarnings').textContent = 'R 18,500';
+                    document.getElementById('totalTrips').textContent = '890';
                 } else if (user.name === 'Nomsa Zwane') {
                     document.getElementById('driverRating').textContent = 'Rating: 4.9 (567 trips)';
+                    document.getElementById('todayEarnings').textContent = 'R 920';
+                    document.getElementById('weekEarnings').textContent = 'R 4,850';
+                    document.getElementById('monthEarnings').textContent = 'R 21,200';
+                    document.getElementById('totalTrips').textContent = '567';
                 }
+            } else {
+                // Redirect to login if no user
+                window.location.href = 'login.html';
             }
         }
         
@@ -447,34 +660,58 @@
                 statusText.textContent = 'Online';
                 statusText.className = 'status-badge status-online';
                 rideRequest.style.display = 'block';
+                // Show notification
+                showNotification('You are now online and can receive ride requests');
             } else {
                 statusText.textContent = 'Offline';
                 statusText.className = 'status-badge status-offline';
                 rideRequest.style.display = 'none';
+                showNotification('You are now offline');
             }
         }
         
         function acceptRide() {
+            // Create ride object
+            const ride = {
+                id: 1,
+                riderName: 'Thabo Nkosi',
+                riderAvatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+                riderRating: 4.9,
+                pickup: 'Sandton City',
+                pickupAddress: 'Sandton Dr, Sandton',
+                dropoff: 'OR Tambo Airport',
+                dropoffAddress: 'Johannesburg',
+                distance: 25,
+                duration: 35,
+                fare: 290,
+                paymentMethod: 'Credit Card'
+            };
+            
+            // Save to session storage
+            sessionStorage.setItem('currentRide', JSON.stringify(ride));
+            
             document.getElementById('rideRequest').style.display = 'none';
             document.getElementById('activeRide').style.display = 'block';
             
-            // Simulate trip progress
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += 10;
-                document.getElementById('tripProgress').style.width = progress + '%';
-                
-                if (progress >= 100) {
-                    clearInterval(interval);
-                }
-            }, 10000);
+            showNotification('Ride accepted! Redirecting to trip...');
+            
+            // Redirect to current trip page after short delay
+            setTimeout(() => {
+                window.location.href = 'driver-current-trip.html';
+            }, 1500);
         }
         
         function declineRide() {
             if (confirm('Decline this ride request?')) {
                 document.getElementById('rideRequest').style.display = 'none';
+                showNotification('Ride declined');
+                
+                // Show next ride after 30 seconds
                 setTimeout(() => {
-                    document.getElementById('rideRequest').style.display = 'block';
+                    if (document.getElementById('driverStatus').checked) {
+                        document.getElementById('rideRequest').style.display = 'block';
+                        showNotification('New ride request received');
+                    }
                 }, 30000);
             }
         }
@@ -482,12 +719,57 @@
         function completeTrip() {
             if (confirm('Complete this trip?')) {
                 document.getElementById('activeRide').style.display = 'none';
-                alert('Trip completed! Thank you for driving with EasyGo.');
+                // Clear current ride from session
+                sessionStorage.removeItem('currentRide');
+                showNotification('Trip completed! Thank you for driving with EasyGo.');
+            }
+        }
+        
+        function showRideDetails() {
+            if (document.getElementById('rideRequest').style.display !== 'none') {
+                alert('New ride request from Thabo Nkosi to OR Tambo Airport. Fare: R290');
+            }
+        }
+        
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #28a745;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+        
+        // Check for active ride on page load
+        function checkActiveRide() {
+            const currentRide = sessionStorage.getItem('currentRide');
+            if (currentRide) {
+                document.getElementById('rideRequest').style.display = 'none';
+                document.getElementById('activeRide').style.display = 'block';
             }
         }
         
         // Call loadUserData when page loads
-        document.addEventListener('DOMContentLoaded', loadUserData);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserData();
+            checkActiveRide();
+        });
     </script>
 </body>
 </html>

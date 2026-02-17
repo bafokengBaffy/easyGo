@@ -140,7 +140,7 @@ function login(email, password, role) {
         localStorage.setItem('currentUser', JSON.stringify(user));
         
         if (role === 'rider') {
-            window.location.href = 'dashboard.html';
+            window.location.href = 'rider-dashboard.html';
         } else if (role === 'driver') {
             window.location.href = 'driver-dashboard.html';
         }
@@ -206,7 +206,7 @@ function signup(userData) {
     
     setTimeout(function() {
         if (userData.role === 'rider') {
-            window.location.href = 'dashboard.html';
+            window.location.href = 'rider-dashboard.html';
         } else {
             window.location.href = 'driver-dashboard.html';
         }
