@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EasyGo · premium mobility South Africa</title>
+  <title>EasyGo · smart transport</title>
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Google Font: Inter -->
@@ -58,7 +58,7 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* ---------- navbar (glass) ---------- */
+    /* ---------- navbar (glass) with proper logo fit ---------- */
     .navbar {
       position: sticky;
       top: 0;
@@ -73,25 +73,61 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 76px;
+      height: 80px; /* slightly increased for better logo fit */
     }
+    /* ----- LOGO CONTAINER – FLEX, FIXED HEIGHT, IMAGE FIT WELL ----- */
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-weight: 700;
-      font-size: 1.7rem;
+      font-size: 1.9rem;        /* bigger brand name */
       letter-spacing: -0.02em;
       color: var(--black-dark);
+      line-height: 1;
     }
-    .logo i {
-      color: var(--gold);
+    /* image wrapper – exact fit */
+    .logo-img-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;               /* fixed square */
+      height: 48px;
+      border-radius: 12px;       /* gentle rounding – optional */
+      overflow: hidden;          /* crop if needed, but we'll use object-fit */
+      background-color: var(--gold); /* warm bg while loading (matches theme) */
+      flex-shrink: 0;
+    }
+    .logo-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;         /* covers area without distortion */
+      display: block;
+    }
+    /* fallback if image missing – show icon */
+    .logo-img-wrapper i {
       font-size: 2.2rem;
-      transition: var(--transition);
+      color: #111;
+      display: none;             /* hidden by default, only if img fails */
     }
-    .logo:hover i {
-      transform: rotate(-5deg) scale(1.05);
+    .logo-img-wrapper img:not([src]), 
+    .logo-img-wrapper img[src=""],
+    .logo-img-wrapper img[src="#"] {
+      display: none;
     }
+    .logo-img-wrapper img:not([src]) + i,
+    .logo-img-wrapper img[src=""] + i,
+    .logo-img-wrapper img[src="#"] + i {
+      display: block;            /* show icon if image missing */
+    }
+
+    .logo span {
+      white-space: nowrap;
+    }
+    .logo:hover {
+      opacity: 0.9;
+    }
+
     .nav-links {
       display: flex;
       gap: 2.5rem;
@@ -144,21 +180,19 @@
 
     /* ---------- HERO with FAST yellow/pink color animation ---------- */
     .hero {
-      /* base gradient, but we overlay a strong color animation */
-      background: #F5C400;  /* fallback yellow */
-      animation: fastYellowPink 3s ease infinite; /* FAST 3s cycle - very noticeable */
-      color: #111; /* dark text for readability on bright bg */
+      background: #F5C400;
+      animation: fastYellowPink 3s ease infinite;
+      color: #111;
       padding: 6rem 0 10rem 0;
       clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
       position: relative;
-      transition: background-color 0.1s; /* extra smoothness */
+      transition: background-color 0.1s;
     }
-    /* add subtle dark overlay to keep text readable if needed */
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.1);  /* very light dim */
+      background: rgba(0,0,0,0.1);
       pointer-events: none;
     }
     .hero::after {
@@ -183,11 +217,11 @@
       line-height: 1.1;
       letter-spacing: -0.02em;
       margin-bottom: 1.5rem;
-      color: #111; /* strong dark */
+      color: #111;
       text-shadow: 0 2px 10px rgba(255,255,255,0.5);
     }
     .hero .highlight {
-      color: #111;  /* almost black for contrast */
+      color: #111;
       background: rgba(255,255,240,0.3);
       padding: 0 8px;
       border-radius: 20px;
@@ -243,7 +277,7 @@
       transform: scale(1.03);
     }
 
-    /* ---------- features ---------- */
+    /* features, stats, etc (keep as before) */
     .features {
       padding: 6rem 0;
       background: var(--off-white);
@@ -306,7 +340,6 @@
       font-weight: 700;
     }
 
-    /* ---------- stats ---------- */
     .stats {
       background: #111;
       color: white;
@@ -326,7 +359,6 @@
       margin-bottom: 0.3rem;
     }
 
-    /* ---------- how it works ---------- */
     .how-it-works {
       padding: 6rem 0;
       background: white;
@@ -368,7 +400,6 @@
       transition: 0.15s;
     }
 
-    /* ---------- cities cloud ---------- */
     .cities {
       padding: 5rem 0;
       background: var(--off-white);
@@ -398,7 +429,6 @@
       box-shadow: 0 20px 25px -12px rgba(245,196,0,0.4);
     }
 
-    /* ---------- footer ---------- */
     footer {
       background: #0a0a0a;
       color: #ddd;
@@ -450,7 +480,7 @@
       color: #777;
     }
 
-    /* ---------- responsive ---------- */
+    /* responsive */
     @media (max-width: 800px) {
       .navbar-container { flex-wrap: wrap; height: auto; padding: 1rem 0; }
       .nav-links { order: 3; width: 100%; justify-content: center; margin-top: 0.8rem; gap: 1.5rem; }
@@ -460,16 +490,24 @@
     }
     @media (max-width: 500px) {
       .section-title { font-size: 2.2rem; }
+      .logo { font-size: 1.5rem; }
+      .logo-img-wrapper { width: 40px; height: 40px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ========== NAVBAR (only login button) ========= -->
+  <!-- ========== NAVBAR with PROPER LOGO FIT (image appears well) ========= -->
   <nav class="navbar">
     <div class="container navbar-container">
+      <!-- Logo container – image fits perfectly, with fallback icon -->
       <a href="index.html" class="logo">
-        <i class="fas fa-bolt"></i> 
+        <div class="logo-img-wrapper">
+          <!-- using the exact path from your original description -->
+          <img src="assets/images/WhatsApp Image 2026-02-16 at 15.01.44.jpeg" alt="EasyGo logo" 
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <i class="fas fa-car" style="display: none; font-size: 2rem; color: #111;"></i>
+        </div>
         <span>EasyGo</span>
       </a>
       <div class="nav-links">
@@ -479,7 +517,6 @@
         <a href="#">Safety</a>
       </div>
       <div class="nav-buttons">
-        <!-- ONLY login button (signup removed, no extra link) -->
         <a href="login.html" class="btn btn-outline"><i class="far fa-user"></i> Log in</a>
       </div>
     </div>
@@ -664,6 +701,17 @@
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // optional: fix for logo image fallback (if image fails, show icon)
+    document.querySelectorAll('.logo-img-wrapper img').forEach(img => {
+      img.addEventListener('error', function() {
+        this.style.display = 'none';
+        const icon = this.nextElementSibling;
+        if (icon && icon.classList.contains('fa-car')) {
+          icon.style.display = 'flex';
         }
       });
     });
