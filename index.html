@@ -1,631 +1,702 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EasyGo - South Africa's Smart Transportation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasyGo · premium mobility South Africa</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Font for modern typography (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <style>
+    /* ----------------------------------------------
+       RESET + GLOBAL (professional base)
+    ------------------------------------------------ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #ffffff;
+      color: #111111;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        /* Navigation */
-        .navbar {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
 
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 20px;
-        }
+    /* ---------- brand colour variables ---------- */
+    :root {
+      --gold: #F5C400;
+      --black-dark: #111111;
+      --black-medium: #1A1A1A;
+      --white: #FFFFFF;
+      --off-white: #F5F5F5;
+      --gray-light: #eaeef2;
+      --shadow-sm: 0 15px 35px -8px rgba(0,0,0,0.08);
+      --shadow-hover: 0 25px 45px -12px rgba(0,0,0,0.25);
+      --transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    }
 
-        .navbar-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: #1e3c72;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
+    /* ---------- glass / premium effects ---------- */
+    .glass-card {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
 
-        .navbar-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+    /* ---------- buttery animations ---------- */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
 
-        .navbar-menu a {
-            text-decoration: none;
-            color: #1e3c72;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
-        .navbar-menu a:hover {
-            color: #FFD166;
-        }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-        .navbar-buttons {
-            display: flex;
-            gap: 1rem;
-        }
+    /* ---------- navbar (light, sticky, subtle) ---------- */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.02);
+    }
 
-        .btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
+    .navbar-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
 
-        .btn-outline {
-            border: 2px solid #1e3c72;
-            color: #1e3c72;
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.7rem;
+      letter-spacing: -0.02em;
+      color: var(--black-dark);
+    }
+    .logo i {
+      color: var(--gold);
+      font-size: 2.2rem;
+      transition: var(--transition);
+    }
+    .logo:hover i {
+      transform: rotate(-5deg) scale(1.05);
+    }
 
-        .btn-outline:hover {
-            background: #1e3c72;
-            color: white;
-        }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      font-weight: 500;
+    }
+    .nav-links a {
+      position: relative;
+      color: var(--black-dark);
+      font-size: 1.05rem;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2.5px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
 
-        .btn-primary {
-            background: #FFD166;
-            color: #1e3c72;
-            border: 2px solid #FFD166;
-        }
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    .btn {
+      padding: 0.6rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      background: transparent;
+    }
+    .btn-outline {
+      border-color: var(--black-dark);
+      color: var(--black-dark);
+    }
+    .btn-outline:hover {
+      background: var(--black-dark);
+      color: white;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black-dark);
+      border-color: var(--gold);
+    }
+    .btn-primary:hover {
+      background: var(--black-dark);
+      color: white;
+      border-color: var(--black-dark);
+    }
 
-        .btn-primary:hover {
-            background: #1e3c72;
-            color: white;
-            border-color: #1e3c72;
-        }
+    /* ---------- HERO (premium dark gradient with gold accent) ---------- */
+    .hero {
+      background: linear-gradient(135deg, #111111 0%, #1A1A1A 55%, #F5C400 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 12s ease infinite;
+      color: white;
+      padding: 6rem 0 10rem 0;
+      clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 30%, rgba(245,196,0,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 120px 0;
-            text-align: center;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        }
-        
-        .hero h1 {
-            font-size: 56px;
-            margin-bottom: 20px;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 40px;
-            opacity: 0.95;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-        
-        .cta-button {
-            padding: 16px 42px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 18px;
-            letter-spacing: 0.3px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-        }
-        
-        .cta-button.primary {
-            background: #FFD166;
-            color: #1e3c72;
-            border: 2px solid #FFD166;
-        }
-        
-        .cta-button.primary:hover {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-        
-        .cta-button.secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.6);
-            backdrop-filter: blur(5px);
-        }
-        
-        .cta-button.secondary:hover {
-            background: white;
-            color: #1e3c72;
-            border: 2px solid white;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-        
-        /* Features */
-        .features {
-            padding: 80px 20px;
-            background: #f8f9fa;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .feature-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: all 0.3s;
-            border: 1px solid rgba(0,0,0,0.02);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(30,60,114,0.1);
-        }
-        
-        .feature-icon {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 25px;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .feature-icon i {
-            font-size: 42px;
-            color: white;
-        }
-        
-        /* Stats */
-        .stats {
-            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            margin-top: 50px;
-        }
-        
-        .stat-number {
-            font-size: 52px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            color: #FFD166;
-        }
-        
-        /* How it works */
-        .how-it-works {
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #f6f9fc 0%, #edf2f9 100%);
-            color: #1e3c72;
-        }
-        
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .step {
-            text-align: center;
-            padding: 35px 25px;
-            background: white;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-        }
-        
-        .step-number {
-            width: 70px;
-            height: 70px;
-            background: #FFD166;
-            color: #1e3c72;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            font-weight: 800;
-            margin: 0 auto 25px;
-        }
-        
-        /* Cities */
-        .cities {
-            padding: 80px 20px;
-            background: white;
-        }
-        
-        .city-tag {
-            display: inline-block;
-            padding: 12px 28px;
-            margin: 6px;
-            background: #f0f5fa;
-            border-radius: 40px;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s;
-            cursor: default;
-            color: #1e3c72;
-            border: 1px solid transparent;
-        }
-        
-        .city-tag:hover {
-            background: #1e3c72;
-            color: white;
-            transform: scale(1.05);
-            border-color: #FFD166;
-        }
-        
-        /* Footer */
-        footer {
-            background: #0a1a2f;
-            color: white;
-            padding: 60px 20px 30px;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h4 {
-            margin-bottom: 20px;
-            color: #FFD166;
-            font-size: 18px;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-column ul li a {
-            color: #b0c4de;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column ul li a:hover {
-            color: #FFD166;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 25px;
-            margin-top: 30px;
-            justify-content: center;
-        }
-        
-        .social-links a {
-            color: white;
-            font-size: 26px;
-            opacity: 0.7;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            opacity: 1;
-            color: #FFD166;
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #1e3c72;
-            color: #b0c4de;
-        }
-        
-        /* Section titles */
-        .section-title {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #1e3c72;
-            font-size: 36px;
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            font-size: 18px;
-            margin-bottom: 40px;
-            color: #666;
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero {
-                padding: 80px 0;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            
-            .cta-button {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
-            }
-            
-            .navbar-menu {
-                display: none;
-            }
-        }
-    </style>
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      animation: fadeUp 0.9s ease forwards;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero .highlight {
+      color: var(--gold);
+      text-shadow: 0 2px 20px rgba(245,196,0,0.4);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      font-weight: 350;
+    }
+    .cta-duo {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-btn {
+      padding: 1rem 3rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      transition: 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.35);
+    }
+    .cta-rider {
+      background: var(--gold);
+      color: #111;
+      border-color: var(--gold);
+    }
+    .cta-rider:hover {
+      background: transparent;
+      color: white;
+      border-color: white;
+      transform: scale(1.05);
+    }
+    .cta-driver {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255,255,255,0.25);
+      color: white;
+    }
+    .cta-driver:hover {
+      background: white;
+      color: #111;
+      border-color: white;
+      transform: scale(1.05);
+    }
+
+    /* ---------- features ---------- */
+    .features {
+      padding: 6rem 0;
+      background: var(--off-white);
+    }
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .section-sub {
+      text-align: center;
+      color: #4a4a4a;
+      font-size: 1.2rem;
+      max-width: 680px;
+      margin: 0 auto 4rem auto;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2.5rem;
+    }
+    .feature-card {
+      background: white;
+      padding: 2.8rem 1.8rem;
+      border-radius: 32px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+    .feature-card:hover {
+      transform: translateY(-12px);
+      box-shadow: var(--shadow-hover);
+    }
+    .feature-icon {
+      width: 100px;
+      height: 100px;
+      background: #111;
+      border-radius: 50%;
+      margin: 0 auto 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+      box-shadow: 0 8px 0 var(--gold);
+    }
+    .feature-card:hover .feature-icon {
+      background: var(--gold);
+      box-shadow: 0 8px 0 #111;
+    }
+    .feature-icon i {
+      font-size: 3rem;
+      color: white;
+    }
+    .feature-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    /* ---------- stats (dark premium) ---------- */
+    .stats {
+      background: #111;
+      color: white;
+      padding: 5rem 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 3rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 4.2rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ---------- how it works ---------- */
+    .how-it-works {
+      padding: 6rem 0;
+      background: white;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+    .step {
+      background: var(--off-white);
+      border-radius: 40px;
+      padding: 3rem 2rem;
+      text-align: center;
+      transition: 0.25s;
+    }
+    .step:hover {
+      background: #111;
+      color: white;
+      transform: scale(1.02);
+    }
+    .step:hover .step-number {
+      background: var(--gold);
+      color: #111;
+    }
+    .step-number {
+      width: 70px;
+      height: 70px;
+      background: #111;
+      color: white;
+      font-size: 2.2rem;
+      font-weight: 800;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      transition: 0.2s;
+    }
+
+    /* ---------- cities cloud ---------- */
+    .cities {
+      padding: 5rem 0;
+      background: var(--off-white);
+    }
+    .city-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 1.5rem;
+      max-width: 900px;
+      margin: 3rem auto 0;
+    }
+    .city-tag {
+      padding: 0.8rem 2rem;
+      background: white;
+      border-radius: 60px;
+      font-weight: 600;
+      color: #111;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      transition: all 0.15s;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+    .city-tag:hover {
+      background: var(--gold);
+      color: #111;
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -12px rgba(245,196,0,0.4);
+    }
+
+    /* ---------- footer (deep dark) ---------- */
+    footer {
+      background: #0a0a0a;
+      color: #ddd;
+      padding: 4rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 2.5rem;
+    }
+    .footer-col h4 {
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col li {
+      margin-bottom: 0.8rem;
+    }
+    .footer-col a {
+      color: #b0b0b0;
+      transition: 0.2s;
+    }
+    .footer-col a:hover {
+      color: var(--gold);
+      padding-left: 4px;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2.2rem;
+      margin: 3rem 0 2rem;
+      font-size: 1.8rem;
+    }
+    .social-links a {
+      color: #aaa;
+      transition: 0.2s;
+    }
+    .social-links a:hover {
+      color: var(--gold);
+      transform: translateY(-5px);
+    }
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #222;
+      padding-top: 2rem;
+      color: #777;
+    }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 800px) {
+      .navbar-container { flex-wrap: wrap; height: auto; padding: 1rem 0; }
+      .nav-links { order: 3; width: 100%; justify-content: center; margin-top: 0.8rem; gap: 1.5rem; }
+      .hero { clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%); padding: 5rem 0 8rem; }
+      .cta-duo { flex-direction: column; align-items: center; width: 100%; }
+      .cta-btn { width: 100%; justify-content: center; }
+    }
+    @media (max-width: 500px) {
+      .navbar-container .nav-buttons .btn { padding: 0.5rem 1.2rem; }
+      .section-title { font-size: 2.2rem; }
+    }
+
+    /* micro-interactions */
+    .hover-lift {
+      transition: transform 0.2s;
+    }
+    .hover-lift:hover {
+      transform: translateY(-4px);
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container navbar-container">
-            <a href="index.html" class="navbar-logo">
-                <img src="https://img.icons8.com/fluency/48/000000/car.png" alt="EasyGo" width="40" height="40">
-                <span>EasyGo</span>
-            </a>
-            <ul class="navbar-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#cities">Cities</a></li>
-            </ul>
-            <div class="navbar-buttons">
-                <a href="login.html" class="btn btn-outline">Login</a>
-                <a href="signup.html" class="btn btn-primary">Sign Up</a>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <div class="container">
-            <h1>Welcome to EasyGo</h1>
-            <p>South Africa's Smart Transportation Platform</p>
-            <p style="font-size: 18px; margin-bottom: 40px;">Safe • Reliable • Affordable</p>
-            <div class="cta-buttons">
-                <button onclick="handleUserTypeSelection('rider')" class="cta-button primary">
-                    <i class="fas fa-user-plus" style="margin-right: 8px;"></i>Rider
-                </button>
-                <button onclick="handleUserTypeSelection('driver')" class="cta-button secondary">
-                    <i class="fas fa-car" style="margin-right: 8px;"></i>Driver
-                </button>
-            </div>
-        </div>
+  <!-- ===== STICKY NAVBAR (glass) ===== -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-bolt"></i> 
+        <span>EasyGo</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#cities">Cities</a>
+        <a href="#">Safety</a>
+      </div>
+      <div class="nav-buttons">
+        <a href="login.html" class="btn btn-outline"><i class="far fa-user"></i> Log in</a>
+        <a href="signup.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Sign up</a>
+      </div>
     </div>
+  </nav>
 
-    <!-- Features Section -->
-    <div id="features" class="features">
-        <div class="container">
-            <h2 class="section-title">Why Choose EasyGo?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Safe Rides</h3>
-                    <p>Background checked drivers and 24/7 support</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>On Time</h3>
-                    <p>Real-time tracking and estimated arrival times</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-wallet"></i>
-                    </div>
-                    <h3>Best Prices</h3>
-                    <p>Competitive rates with no hidden fees</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>24/7 Support</h3>
-                    <p>We're always here to help you</p>
-                </div>
-            </div>
-        </div>
+  <!-- ===== HERO with refined dark/gold gradient ===== -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>
+        <span class="highlight">Move</span> with <br>EasyGo<span class="highlight">.</span>
+      </h1>
+      <p>South Africa’s smart transportation — safe, reliable, and effortlessly premium.</p>
+      <div class="cta-duo">
+        <button onclick="handleUser('rider')" class="cta-btn cta-rider">
+          <i class="fas fa-user-plus"></i> I’m a Rider
+        </button>
+        <button onclick="handleUser('driver')" class="cta-btn cta-driver">
+          <i class="fas fa-car"></i> I’m a Driver
+        </button>
+      </div>
     </div>
-    
-    <!-- Stats Section -->
-    <div class="stats">
-        <div class="container">
-            <h2 style="margin-bottom: 20px; font-size: 36px; color: white;">EasyGo in Numbers</h2>
-            <div class="stats-grid">
-                <div>
-                    <div class="stat-number">50,000+</div>
-                    <div>Happy Riders</div>
-                </div>
-                <div>
-                    <div class="stat-number">2,500+</div>
-                    <div>Active Drivers</div>
-                </div>
-                <div>
-                    <div class="stat-number">100,000+</div>
-                    <div>Trips Completed</div>
-                </div>
-                <div>
-                    <div class="stat-number">15+</div>
-                    <div>Cities in SA</div>
-                </div>
-            </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2 class="section-title">Designed around you</h2>
+      <p class="section-sub">Every feature built with safety, speed, and South Africa in mind.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Safe rides</h3>
+          <p>Background‑checked drivers · 24/7 support · share trip status</p>
         </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-clock"></i></div>
+          <h3>Always on time</h3>
+          <p>Real‑time ETA · intelligent routing · live map</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-wallet"></i></div>
+          <h3>Fair prices</h3>
+          <p>Upfront fares · no surge surprises · wallet & cash</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-headset"></i></div>
+          <h3>24/7 Concierge</h3>
+          <p>We’re always awake. Chat or call, anytime.</p>
+        </div>
+      </div>
     </div>
-    
-    <!-- How It Works Section -->
-    <div id="how-it-works" class="how-it-works">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <p class="section-subtitle">Get started with EasyGo in three simple steps</p>
-            
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Create Account</h3>
-                    <p>Sign up as a rider or driver partner in minutes</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Choose Your Path</h3>
-                    <p>Request a ride or start earning as a driver</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Enjoy the Journey</h3>
-                    <p>Travel safely and conveniently with EasyGo</p>
-                </div>
-            </div>
-        </div>
+  </section>
+
+  <!-- ===== STATS (golden numbers) ===== -->
+  <div class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div><div class="stat-number">65k+</div><div>happy riders</div></div>
+        <div><div class="stat-number">3.2k+</div><div>active drivers</div></div>
+        <div><div class="stat-number">210k+</div><div>trips completed</div></div>
+        <div><div class="stat-number">18</div><div>cities in SA</div></div>
+      </div>
     </div>
-    
-    <!-- Cities Section -->
-    <div id="cities" class="cities">
-        <div class="container">
-            <h2 class="section-title">We Operate in Major South African Cities</h2>
-            <div style="text-align: center;">
-                <span class="city-tag">Johannesburg</span>
-                <span class="city-tag">Cape Town</span>
-                <span class="city-tag">Durban</span>
-                <span class="city-tag">Pretoria</span>
-                <span class="city-tag">Port Elizabeth</span>
-                <span class="city-tag">Bloemfontein</span>
-                <span class="city-tag">East London</span>
-                <span class="city-tag">Pietermaritzburg</span>
-                <span class="city-tag">Polokwane</span>
-                <span class="city-tag">Nelspruit</span>
-                <span class="city-tag">Rustenburg</span>
-                <span class="city-tag">Kimberley</span>
-            </div>
+  </div>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section id="how-it-works" class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">Three moves ahead</h2>
+      <p class="section-sub">From download to destination in minutes.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Create account</h3>
+          <p>Rider or driver – sign up in under 2 minutes.</p>
         </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Choose your path</h3>
+          <p>Request a ride or start earning immediately.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Enjoy the journey</h3>
+          <p>Travel smooth, arrive happy.</p>
+        </div>
+      </div>
     </div>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h4>EasyGo</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Press</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Safety</h4>
-                    <ul>
-                        <li><a href="#">Safety Guidelines</a></li>
-                        <li><a href="#">For Drivers</a></li>
-                        <li><a href="#">For Riders</a></li>
-                        <li><a href="#">Emergency</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Report an Issue</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 EasyGo. All rights reserved. | Operating throughout South Africa</p>
-            </div>
+  </section>
+
+  <!-- ===== CITIES ===== -->
+  <section id="cities" class="cities">
+    <div class="container">
+      <h2 class="section-title">We cover the nation</h2>
+      <p class="section-sub">From Gauteng to the Cape – we’re everywhere you need.</p>
+      <div class="city-cloud">
+        <span class="city-tag">Johannesburg</span>
+        <span class="city-tag">Cape Town</span>
+        <span class="city-tag">Durban</span>
+        <span class="city-tag">Pretoria</span>
+        <span class="city-tag">Port Elizabeth</span>
+        <span class="city-tag">Bloemfontein</span>
+        <span class="city-tag">East London</span>
+        <span class="city-tag">Pietermaritzburg</span>
+        <span class="city-tag">Polokwane</span>
+        <span class="city-tag">Nelspruit</span>
+        <span class="city-tag">Rustenburg</span>
+        <span class="city-tag">Kimberley</span>
+        <span class="city-tag">George</span>
+        <span class="city-tag">Stellenbosch</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>EasyGo</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
         </div>
-    </footer>
-    
-    <!-- JavaScript -->
-    <script>
-        function handleUserTypeSelection(userType) {
-            // Store the selected user type
-            localStorage.setItem('selectedUserType', userType);
-            localStorage.setItem('skipToStep', '2');
-            
-            // Redirect to signup page
-            window.location.href = 'signup.html';
+        <div class="footer-col">
+          <h4>Safety</h4>
+          <ul>
+            <li><a href="#">Guidelines</a></li>
+            <li><a href="#">Driver safety</a></li>
+            <li><a href="#">Rider safety</a></li>
+            <li><a href="#">Emergency</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Help center</a></li>
+            <li><a href="#">Report issue</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 EasyGo (Pty) Ltd. · operating throughout South Africa</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- tiny interaction script (stores selection) -->
+  <script>
+    function handleUser(type) {
+      localStorage.setItem('easygo_user_type', type);
+      localStorage.setItem('easygo_skip_to', 'step2');
+      window.location.href = 'signup.html';   // redirect to signup (prototype flow)
+    }
+
+    // optional: subtle scroll animation for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-    </script>
+      });
+    });
+  </script>
+
+
 </body>
 </html>
