@@ -603,6 +603,99 @@
             background: #e9ecef;
         }
 
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .toast {
+            background: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: slideIn 0.3s ease;
+            max-width: 350px;
+        }
+
+        .toast.success {
+            border-left: 4px solid #28a745;
+        }
+
+        .toast.error {
+            border-left: 4px solid #dc3545;
+        }
+
+        .toast.info {
+            border-left: 4px solid #17a2b8;
+        }
+
+        .toast i {
+            font-size: 20px;
+        }
+
+        .toast.success i {
+            color: #28a745;
+        }
+
+        .toast.error i {
+            color: #dc3545;
+        }
+
+        .toast.info i {
+            color: #17a2b8;
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .toast-message {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .toast-close {
+            cursor: pointer;
+            color: #999;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         @media (max-width: 768px) {
             .wallet-section {
                 flex-direction: column;
@@ -1251,36 +1344,36 @@
                     </div>
                 </div>
 
-                <div class="ride-detail-card">
-                    <div class="detail-row">
-                        <span class="detail-label">Transaction ID</span>
-                        <span class="detail-value">${transaction.reference}</span>
+                <div style="background: #f8f9fa; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e0e0e0;">
+                        <span style="color: #666;">Transaction ID</span>
+                        <span style="font-weight: 600; color: var(--dark);">${transaction.reference}</span>
                     </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Description</span>
-                        <span class="detail-value">${transaction.title}</span>
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e0e0e0;">
+                        <span style="color: #666;">Description</span>
+                        <span style="font-weight: 600; color: var(--dark);">${transaction.title}</span>
                     </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Date & Time</span>
-                        <span class="detail-value">${formattedDate} at ${transaction.time}</span>
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e0e0e0;">
+                        <span style="color: #666;">Date & Time</span>
+                        <span style="font-weight: 600; color: var(--dark);">${formattedDate} at ${transaction.time}</span>
                     </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Payment Method</span>
-                        <span class="detail-value">${transaction.paymentMethod}</span>
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e0e0e0;">
+                        <span style="color: #666;">Payment Method</span>
+                        <span style="font-weight: 600; color: var(--dark);">${transaction.paymentMethod}</span>
                     </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Status</span>
-                        <span class="detail-value">
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+                        <span style="color: #666;">Status</span>
+                        <span style="font-weight: 600; color: var(--dark);">
                             <span class="transaction-status status-${transaction.status}">${transaction.status}</span>
                         </span>
                     </div>
                 </div>
 
                 <div style="display: flex; gap: 15px; margin-top: 20px;">
-                    <button class="receipt-download" onclick="downloadReceipt('${transaction.reference}')" style="flex: 1;">
+                    <button class="save-btn" onclick="downloadReceipt('${transaction.reference}')" style="flex: 1;">
                         <i class="fas fa-download"></i> Download Receipt
                     </button>
-                    <button class="wallet-btn" onclick="reportIssue('${transaction.reference}')" style="flex: 1; background: var(--danger);">
+                    <button class="cancel-btn" onclick="reportIssue('${transaction.reference}')" style="flex: 1;">
                         <i class="fas fa-flag"></i> Report Issue
                     </button>
                 </div>
@@ -1425,6 +1518,13 @@
         // Report issue
         function reportIssue(reference) {
             showToast('Report', `Issue reported for transaction ${reference}`, 'info');
+        }
+
+        // Logout function
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = 'login.html';
+            }
         }
 
         // Show toast
