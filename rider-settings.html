@@ -1,0 +1,514 @@
+                                    <i class="fas fa-undo-alt"></i> Reset All
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="settings-item">
+                                <div class="settings-item-info">
+                                    <h4>Clear All Data</h4>
+                                    <p>Remove all app data and start fresh</p>
+                                </div>
+                                <div class="settings-item-controls">
+                                    <button class="danger-btn" onclick="clearAllData()">
+                                        <i class="fas fa-trash-alt"></i> Clear Data
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div class="modal" id="changePasswordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Change Password</h2>
+                <span class="modal-close" onclick="closeModal('changePasswordModal')">&times;</span>
+            </div>
+            <div class="form-group">
+                <label>Current Password</label>
+                <input type="password" id="currentPassword" placeholder="Enter current password">
+            </div>
+            <div class="form-group">
+                <label>New Password</label>
+                <input type="password" id="newPassword" placeholder="Enter new password">
+            </div>
+            <div class="form-group">
+                <label>Confirm New Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm new password">
+            </div>
+            <div class="modal-actions">
+                <button class="save-btn" onclick="changePassword()">Update Password</button>
+                <button class="cancel-btn" onclick="closeModal('changePasswordModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div class="modal" id="aboutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>About EasyGo</h2>
+                <span class="modal-close" onclick="closeModal('aboutModal')">&times;</span>
+            </div>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="https://img.icons8.com/fluency/96/000000/car.png" alt="EasyGo">
+                <h3 style="margin-top: 10px;">EasyGo v2.5.0</h3>
+                <p style="color: #666;">Your Premier Ride-Hailing Solution</p>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <p><strong>© 2026 EasyGo Technologies</strong></p>
+                <p style="color: #666; margin-top: 10px;">EasyGo is South Africa's fastest-growing ride-hailing platform, connecting millions of riders with trusted drivers across the country.</p>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <p><strong>Key Features:</strong></p>
+                <ul style="margin-left: 20px; color: #666; line-height: 1.8;">
+                    <li>Real-time ride tracking</li>
+                    <li>Multiple payment options</li>
+                    <li>24/7 customer support</li>
+                    <li>Safety features and emergency assistance</li>
+                    <li>Driver ratings and reviews</li>
+                </ul>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <p><strong>Legal:</strong></p>
+                <p style="color: #666;">Version 2.5.0 (Build 2501)<br>
+                Last updated: February 2026<br>
+                <a href="#" style="color: var(--primary);">Terms of Service</a> | 
+                <a href="#" style="color: var(--primary);">Privacy Policy</a></p>
+            </div>
+            <div style="text-align: center;">
+                <button class="cancel-btn" onclick="closeModal('aboutModal')" style="width: 100%;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- API Endpoint Modal -->
+    <div class="modal" id="apiEndpointModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Change API Endpoint</h2>
+                <span class="modal-close" onclick="closeModal('apiEndpointModal')">&times;</span>
+            </div>
+            <div class="form-group">
+                <label>API Endpoint URL</label>
+                <input type="url" id="apiEndpoint" value="https://api.easygo.com/v2" placeholder="Enter API endpoint">
+            </div>
+            <div class="form-group">
+                <label>API Key (Optional)</label>
+                <input type="text" id="apiKey" placeholder="Enter API key">
+            </div>
+            <div class="modal-actions">
+                <button class="save-btn" onclick="saveAPIEndpoint()">Save Changes</button>
+                <button class="cancel-btn" onclick="closeModal('apiEndpointModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Proxy Settings Modal -->
+    <div class="modal" id="proxyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Proxy Settings</h2>
+                <span class="modal-close" onclick="closeModal('proxyModal')">&times;</span>
+            </div>
+            <div class="form-group">
+                <label>Proxy Type</label>
+                <select class="settings-select" id="proxyType" style="width: 100%;">
+                    <option value="none">No Proxy</option>
+                    <option value="http">HTTP Proxy</option>
+                    <option value="socks">SOCKS Proxy</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Proxy Host</label>
+                <input type="text" id="proxyHost" placeholder="e.g., proxy.example.com">
+            </div>
+            <div class="form-group">
+                <label>Proxy Port</label>
+                <input type="number" id="proxyPort" placeholder="e.g., 8080">
+            </div>
+            <div class="form-group">
+                <label>Username (Optional)</label>
+                <input type="text" id="proxyUsername" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label>Password (Optional)</label>
+                <input type="password" id="proxyPassword" placeholder="Password">
+            </div>
+            <div class="modal-actions">
+                <button class="save-btn" onclick="saveProxySettings()">Save Settings</button>
+                <button class="cancel-btn" onclick="closeModal('proxyModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Reset Modal -->
+    <div class="modal" id="confirmResetModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Reset</h2>
+                <span class="modal-close" onclick="closeModal('confirmResetModal')">&times;</span>
+            </div>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <i class="fas fa-exclamation-triangle" style="font-size: 48px; color: var(--warning);"></i>
+                <h3 style="margin-top: 10px;">Are you sure?</h3>
+                <p style="color: #666;">This action will reset all settings to their default values. This cannot be undone.</p>
+            </div>
+            <div class="modal-actions">
+                <button class="danger-btn" onclick="resetAllSettings()">Yes, Reset All</button>
+                <button class="cancel-btn" onclick="closeModal('confirmResetModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Account Modal -->
+    <div class="modal" id="deleteAccountModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Delete Account</h2>
+                <span class="modal-close" onclick="closeModal('deleteAccountModal')">&times;</span>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                    <i class="fas fa-exclamation-circle"></i> 
+                    <strong>Warning:</strong> This action is permanent and cannot be undone.
+                </div>
+                <p style="color: #666; margin-bottom: 15px;">Deleting your account will:</p>
+                <ul style="color: #666; margin-left: 20px; line-height: 1.8;">
+                    <li>Permanently delete your profile information</li>
+                    <li>Remove all your ride history</li>
+                    <li>Delete all payment methods</li>
+                    <li>Cancel any active subscriptions</li>
+                    <li>Remove access to all connected apps</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label>Enter your password to confirm</label>
+                <input type="password" id="deletePassword" placeholder="Enter your password">
+            </div>
+            <div class="form-group">
+                <label>Type "DELETE" to confirm</label>
+                <input type="text" id="deleteConfirm" placeholder="DELETE">
+            </div>
+            <div class="modal-actions">
+                <button class="danger-btn" onclick="confirmDeleteAccount()">Permanently Delete Account</button>
+                <button class="cancel-btn" onclick="closeModal('deleteAccountModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Settings Section Switching
+        function switchSettingsSection(section, element) {
+            // Update active class on categories
+            document.querySelectorAll('.settings-category').forEach(cat => {
+                cat.classList.remove('active');
+            });
+            element.classList.add('active');
+
+            // Show corresponding section
+            document.querySelectorAll('.settings-section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            document.getElementById(section + 'Section').classList.add('active');
+
+            showToast('Settings section changed', 'info');
+        }
+
+        // Toggle Switch
+        function toggleSetting(element, settingName) {
+            element.classList.toggle('active');
+            const isActive = element.classList.contains('active');
+            
+            // Simulate saving setting
+            console.log(`Setting ${settingName} to ${isActive}`);
+            
+            showToast(`${settingName} ${isActive ? 'enabled' : 'disabled'}`, 'success');
+        }
+
+        // Update Select Setting
+        function updateSetting(settingName, value) {
+            console.log(`Setting ${settingName} updated to ${value}`);
+            showToast(`${settingName} updated successfully`, 'success');
+        }
+
+        // Language Selection
+        function selectLanguage(element, langCode) {
+            document.querySelectorAll('.language-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+            
+            console.log(`Language changed to ${langCode}`);
+            showToast('Language updated successfully', 'success');
+        }
+
+        // Session Management
+        function terminateSession() {
+            showToast('Session terminated successfully', 'success');
+        }
+
+        function terminateAllSessions() {
+            showLoading(true);
+            setTimeout(() => {
+                showLoading(false);
+                showToast('All other sessions have been signed out', 'success');
+            }, 1500);
+        }
+
+        // Connected Apps
+        function connectNewApp() {
+            showToast('Connect new app feature coming soon', 'info');
+        }
+
+        function revokeApp(appName) {
+            if (confirm(`Are you sure you want to revoke ${appName} access?`)) {
+                showToast(`${appName} access revoked`, 'success');
+            }
+        }
+
+        // Data Management
+        function clearCache() {
+            showLoading(true);
+            setTimeout(() => {
+                showLoading(false);
+                showToast('Cache cleared successfully', 'success');
+            }, 1000);
+        }
+
+        function manageOfflineMaps() {
+            showToast('Offline maps management coming soon', 'info');
+        }
+
+        function manageSavedLocations() {
+            showToast('Saved locations management coming soon', 'info');
+        }
+
+        function downloadData() {
+            showLoading(true);
+            setTimeout(() => {
+                showLoading(false);
+                showToast('Your data export has been requested. You will receive an email when ready.', 'success');
+            }, 2000);
+        }
+
+        function deleteAccount() {
+            openModal('deleteAccountModal');
+        }
+
+        function confirmDeleteAccount() {
+            const password = document.getElementById('deletePassword').value;
+            const confirm = document.getElementById('deleteConfirm').value;
+            
+            if (!password) {
+                showToast('Please enter your password', 'error');
+                return;
+            }
+            
+            if (confirm !== 'DELETE') {
+                showToast('Please type DELETE to confirm', 'error');
+                return;
+            }
+            
+            showLoading(true);
+            setTimeout(() => {
+                showLoading(false);
+                showToast('Account deletion requested. You will receive a confirmation email.', 'info');
+                closeModal('deleteAccountModal');
+            }, 2000);
+        }
+
+        // Advanced Settings
+        function changeAPIEndpoint() {
+            openModal('apiEndpointModal');
+        }
+
+        function saveAPIEndpoint() {
+            const endpoint = document.getElementById('apiEndpoint').value;
+            const apiKey = document.getElementById('apiKey').value;
+            
+            showLoading(true);
+            setTimeout(() => {
+                showLoading(false);
+                showToast('API endpoint updated successfully', 'success');
+                closeModal('apiEndpointModal');
+            }, 1000);
+        }
+
+        function configureProxy() {
+            openModal('proxyModal');
+        }
+
+        function saveProxySettings() {
+            showLoading(true);
+            setTimeout(() => {
+                showLoading(false);
+                showToast('Proxy settings saved', 'success');
+                closeModal('proxyModal');
+            }, 1000);
+        }
+
+        function joinBeta() {
+            showToast('You have joined the Beta program!', 'success');
+        }
+
+        function resetSettings() {
+            openModal('confirmResetModal');
+        }
+
+        function resetAllSettings() {
+            showLoading(true);
+            setTimeout(() => {
+                showLoading(false);
+                showToast('All settings have been reset to default', 'success');
+                closeModal('confirmResetModal');
+                
+                // Reset toggles to default states (example)
+                document.querySelectorAll('.toggle-switch').forEach(toggle => {
+                    if (toggle.classList.contains('active')) {
+                        // Keep some active, deactivate others as per default
+                    }
+                });
+            }, 1500);
+        }
+
+        function clearAllData() {
+            if (confirm('Are you sure you want to clear all app data? This cannot be undone.')) {
+                showLoading(true);
+                setTimeout(() => {
+                    showLoading(false);
+                    showToast('All app data cleared', 'success');
+                }, 2000);
+            }
+        }
+
+        // Modal Functions
+        function showChangePasswordModal() {
+            openModal('changePasswordModal');
+        }
+
+        function showAboutModal() {
+            openModal('aboutModal');
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('show');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+
+        function changePassword() {
+            const currentPwd = document.getElementById('currentPassword').value;
+            const newPwd = document.getElementById('newPassword').value;
+            const confirmPwd = document.getElementById('confirmPassword').value;
+            
+            if (!currentPwd || !newPwd || !confirmPwd) {
+                showToast('Please fill in all fields', 'error');
+                return;
+            }
+            
+            if (newPwd !== confirmPwd) {
+                showToast('New passwords do not match', 'error');
+                return;
+            }
+            
+            if (newPwd.length < 8) {
+                showToast('Password must be at least 8 characters', 'error');
+                return;
+            }
+            
+            showLoading(true);
+            setTimeout(() => {
+                showLoading(false);
+                showToast('Password changed successfully', 'success');
+                closeModal('changePasswordModal');
+                
+                // Clear password fields
+                document.getElementById('currentPassword').value = '';
+                document.getElementById('newPassword').value = '';
+                document.getElementById('confirmPassword').value = '';
+            }, 1500);
+        }
+
+        // Toast Notifications
+        function showToast(message, type = 'info') {
+            const toastContainer = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            let icon = 'info-circle';
+            if (type === 'success') icon = 'check-circle';
+            if (type === 'error') icon = 'exclamation-circle';
+            
+            toast.innerHTML = `
+                <i class="fas fa-${icon}"></i>
+                <div class="toast-content">
+                    <div class="toast-title">${type.charAt(0).toUpperCase() + type.slice(1)}</div>
+                    <div class="toast-message">${message}</div>
+                </div>
+                <span class="toast-close" onclick="this.parentElement.remove()">&times;</span>
+            `;
+            
+            toastContainer.appendChild(toast);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.remove();
+                }
+            }, 5000);
+        }
+
+        // Loading Spinner
+        function showLoading(show) {
+            document.getElementById('loadingSpinner').style.display = show ? 'block' : 'none';
+        }
+
+        // Logout Function
+        function logout() {
+            showLoading(true);
+            setTimeout(() => {
+                showLoading(false);
+                window.location.href = 'login.html';
+            }, 1000);
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('show');
+            }
+        }
+
+        // Initialize settings from saved preferences
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load user preferences from localStorage or API
+            const savedSettings = localStorage.getItem('easygo_settings');
+            if (savedSettings) {
+                const settings = JSON.parse(savedSettings);
+                // Apply saved settings to UI
+                console.log('Loaded saved settings:', settings);
+            }
+            
+            // Update sidebar user info
+            const user = JSON.parse(localStorage.getItem('easygo_user') || '{}');
+            if (user.name) {
+                document.getElementById('userName').textContent = user.name;
+                document.getElementById('userEmail').textContent = user.email;
+            }
+            
+            showToast('Settings loaded', 'success');
+        });
+    </script>
+
+    <!-- Include sidebar functionality -->
+    <script src="assets/js/sidebar.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
