@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>easyGo · smart transport</title>
+  <title>easyGo · supercharged prototype</title>
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Google Font: Inter -->
@@ -73,54 +73,40 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 80px; /* slightly increased for better logo fit */
+      height: 80px;
     }
-    /* ----- LOGO CONTAINER – FLEX, FIXED HEIGHT, IMAGE FIT WELL ----- */
     .logo {
       display: flex;
       align-items: center;
       gap: 12px;
       font-weight: 700;
-      font-size: 1.9rem;        /* bigger brand name */
+      font-size: 1.9rem;
       letter-spacing: -0.02em;
       color: var(--black-dark);
       line-height: 1;
     }
-    /* image wrapper – exact fit */
     .logo-img-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;               /* fixed square */
+      width: 48px;
       height: 48px;
-      border-radius: 12px;       /* gentle rounding – optional */
-      overflow: hidden;          /* crop if needed, but we'll use object-fit */
-      background-color: var(--gold); /* warm bg while loading (matches theme) */
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: var(--gold);
       flex-shrink: 0;
     }
     .logo-img-wrapper img {
       width: 100%;
       height: 100%;
-      object-fit: cover;         /* covers area without distortion */
+      object-fit: cover;
       display: block;
     }
-    /* fallback if image missing – show icon */
     .logo-img-wrapper i {
       font-size: 2.2rem;
       color: #111;
-      display: none;             /* hidden by default, only if img fails */
-    }
-    .logo-img-wrapper img:not([src]), 
-    .logo-img-wrapper img[src=""],
-    .logo-img-wrapper img[src="#"] {
       display: none;
     }
-    .logo-img-wrapper img:not([src]) + i,
-    .logo-img-wrapper img[src=""] + i,
-    .logo-img-wrapper img[src="#"] + i {
-      display: block;            /* show icon if image missing */
-    }
-
     .logo span {
       white-space: nowrap;
     }
@@ -480,7 +466,126 @@
       color: #777;
     }
 
-    /* responsive */
+    /* ========== NEW FEATURE 1: REAL-TIME TOGGLE PRICING CARD (INTERACTIVE) ========= */
+    .price-toggler {
+      background: white;
+      border-radius: 48px;
+      padding: 3rem 2rem;
+      margin: 3rem auto;
+      box-shadow: var(--shadow-hover);
+      max-width: 700px;
+      border: 2px dashed var(--gold);
+    }
+    .toggle-switch {
+      display: flex;
+      background: #eee;
+      border-radius: 60px;
+      padding: 0.4rem;
+      width: fit-content;
+      margin: 2rem auto 1.5rem;
+    }
+    .toggle-option {
+      padding: 0.8rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.1s;
+      background: transparent;
+    }
+    .toggle-option.active {
+      background: var(--gold);
+      color: #111;
+      box-shadow: 0 6px 14px rgba(245,196,0,0.4);
+    }
+    .price-big {
+      font-size: 4rem;
+      font-weight: 800;
+      color: #111;
+      line-height: 1;
+    }
+    .price-note {
+      color: #666;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ========== NEW FEATURE 2: DRIVER / RIDER QUICK BAR (PROGRESS + TOGGLE) ========= */
+    .quick-progress {
+      background: #111;
+      color: white;
+      padding: 2.5rem;
+      border-radius: 80px;
+      margin: 4rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .progress-circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: conic-gradient(var(--gold) 0deg 180deg, #333 180deg 360deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: black;
+      background-color: var(--gold); /* fallback */
+    }
+    .driver-toggle-badge {
+      background: var(--gold);
+      color: #111;
+      border-radius: 60px;
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      cursor: pointer;
+      transition: 0.1s;
+    }
+    .driver-toggle-badge.off {
+      background: #444;
+      color: #ccc;
+    }
+
+    /* ========== NEW FEATURE 3: INTERACTIVE CITY SLIDER (REAL DATA) ========= */
+    .city-slider {
+      background: linear-gradient(145deg, #fff9e6, #fff0d4);
+      border-radius: 60px;
+      padding: 2.5rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      border: 2px solid var(--gold);
+      margin: 3rem 0;
+    }
+    .city-slider-item {
+      background: white;
+      border-radius: 50px;
+      padding: 1rem 2rem;
+      box-shadow: 0 8px 0 #111;
+      font-weight: 600;
+      transition: 0.1s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .city-slider-item.active-city {
+      background: var(--gold);
+      transform: translateY(-5px);
+      box-shadow: 0 13px 0 #111;
+    }
+    .city-stats-live {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    /* responsiveness */
     @media (max-width: 800px) {
       .navbar-container { flex-wrap: wrap; height: auto; padding: 1rem 0; }
       .nav-links { order: 3; width: 100%; justify-content: center; margin-top: 0.8rem; gap: 1.5rem; }
@@ -497,13 +602,11 @@
 </head>
 <body>
 
-  <!-- ========== NAVBAR with PROPER LOGO FIT (image appears well) ========= -->
+  <!-- ========== NAVBAR ========= -->
   <nav class="navbar">
     <div class="container navbar-container">
-      <!-- Logo container – image fits perfectly, with fallback icon -->
       <a href="index.html" class="logo">
         <div class="logo-img-wrapper">
-          <!-- using the exact path from your original description -->
           <img src="assets/images/WhatsApp Image 2026-02-16 at 15.01.44.jpeg" alt="EasyGo logo" 
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <i class="fas fa-car" style="display: none; font-size: 2rem; color: #111;"></i>
@@ -522,14 +625,13 @@
     </div>
   </nav>
 
-  <!-- ========== HERO with FAST yellow ⇄ light pink animation ========= -->
+  <!-- ========== HERO with FAST yellow ⇄ pink ========= -->
   <section class="hero">
     <div class="container hero-content">
-      <h1>
-        <span class="highlight">Move</span> with <br>easyGo<span class="highlight"></span>
-      </h1>
+      <h1><span class="highlight">Move</span> with <br>easyGo<span class="highlight"></span></h1>
       <p>South Africa’s smart transportation — safe, reliable, and effortlessly premium.</p>
       <div class="cta-duo">
+        <!-- these buttons store role and redirect to signup page step2 -->
         <button onclick="handleUser('rider')" class="cta-btn cta-rider">
           <i class="fas fa-user-plus"></i> Sign up as Rider
         </button>
@@ -540,7 +642,8 @@
     </div>
   </section>
 
-  <!-- ========== FEATURES ========= -->
+
+  <!-- ========== EXISTING FEATURES SECTION (slightly enhanced) ========= -->
   <section id="features" class="features">
     <div class="container">
       <h2 class="section-title">Designed around you</h2>
@@ -631,7 +734,7 @@
     </div>
   </section>
 
-  <!-- ========== FOOTER ========= -->
+  <!-- ========== FOOTER (with extra signup button) ========= -->
   <footer>
     <div class="container">
       <div class="footer-grid">
@@ -672,6 +775,11 @@
         </div>
       </div>
 
+      <!-- prominent sign-up button in footer -->
+      <div style="text-align: center; margin: 2.5rem 0 1.5rem;">
+        <a href="signup.html" class="btn" style="background: var(--gold); color:#111; padding: 1rem 3.5rem; font-size:1.3rem; box-shadow:0 8px 0 #111;"><i class="fas fa-pen"></i> Sign up now – it's free</a>
+      </div>
+
       <div class="social-links">
         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
@@ -687,34 +795,134 @@
   </footer>
 
   <script>
-    function handleUser(type) {
-      localStorage.setItem('easygo_user_type', type);
-      localStorage.setItem('easygo_skip_to', 'step2');
-      window.location.href = 'signup.html';
-    }
-    // smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href === "#") return;
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
+    (function() {
+      // ----- HERO BUTTONS: store role and go to signup step2 -----
+      window.handleUser = function(type) {
+        // store both keys to work with the signup page (it reads selectedUserType)
+        localStorage.setItem('selectedUserType', type === 'rider' ? 'client' : 'driver'); // signup uses 'client' for rider
+        localStorage.setItem('easygo_user_type', type);
+        localStorage.setItem('skipToStep', '2');
+        window.location.href = 'signup.html'; // go to the professional sign‑up page
+      };
 
-    // optional: fix for logo image fallback (if image fails, show icon)
-    document.querySelectorAll('.logo-img-wrapper img').forEach(img => {
-      img.addEventListener('error', function() {
-        this.style.display = 'none';
-        const icon = this.nextElementSibling;
-        if (icon && icon.classList.contains('fa-car')) {
-          icon.style.display = 'flex';
+      // ----- NEW FEATURE 1: Price toggler (rider/driver) -----
+      const toggleOptions = document.querySelectorAll('.toggle-option');
+      const dynamicPrice = document.getElementById('dynamicPrice');
+      const priceNote = document.getElementById('priceNote');
+      let currentView = 'rider'; // 'rider' or 'driver'
+
+      function updatePrice() {
+        if (currentView === 'rider') {
+          dynamicPrice.innerText = 'R 89';
+          priceNote.innerText = 'average trip · Johannesburg';
+        } else {
+          dynamicPrice.innerText = 'R 63';
+          priceNote.innerText = 'estimated driver payout (70%)';
+        }
+      }
+      toggleOptions.forEach(opt => {
+        opt.addEventListener('click', function() {
+          toggleOptions.forEach(o => o.classList.remove('active'));
+          this.classList.add('active');
+          currentView = this.dataset.view;
+          updatePrice();
+        });
+      });
+      // simulate surge
+      document.getElementById('simulateTripBtn')?.addEventListener('click', function() {
+        if (currentView === 'rider') {
+          dynamicPrice.innerText = 'R 145';
+          priceNote.innerText = 'surge pricing · 2.3x multiplier';
+        } else {
+          dynamicPrice.innerText = 'R 101';
+          priceNote.innerText = 'surge earnings (higher)';
+        }
+        setTimeout(() => updatePrice(), 2000); // revert after 2s
+      });
+
+      // ----- NEW FEATURE 2: availability toggle and progress circle (animated) -----
+      const toggleBtn = document.getElementById('availabilityToggle');
+      const toggleStatus = document.getElementById('toggleStatus');
+      const onlineCountSpan = document.getElementById('onlineCount');
+      const progressCircle = document.getElementById('progressCircle');
+      let available = true;
+
+      toggleBtn.addEventListener('click', function() {
+        available = !available;
+        if (available) {
+          toggleBtn.classList.remove('off');
+          toggleBtn.innerHTML = '<i class="fas fa-toggle-on" style="font-size:2rem;"></i><span id="toggleStatus">You\'re available</span>';
+          toggleStatus.innerText = "You're available";
+          onlineCountSpan.innerText = '164'; // more online
+          progressCircle.style.background = 'conic-gradient(#F5C400 0deg 290deg, #333 290deg 360deg)';
+          progressCircle.innerText = '91%';
+        } else {
+          toggleBtn.classList.add('off');
+          toggleBtn.innerHTML = '<i class="fas fa-toggle-off" style="font-size:2rem;"></i><span id="toggleStatus">Unavailable</span>';
+          toggleStatus.innerText = "Unavailable";
+          onlineCountSpan.innerText = '147';
+          progressCircle.style.background = 'conic-gradient(#F5C400 0deg 210deg, #333 210deg 360deg)';
+          progressCircle.innerText = '67%';
         }
       });
-    });
+
+      // ----- NEW FEATURE 3: city slider interactive (live counts) -----
+      const cityItems = document.querySelectorAll('.city-slider-item');
+      cityItems.forEach(item => {
+        item.addEventListener('click', function() {
+          cityItems.forEach(ci => ci.classList.remove('active-city'));
+          this.classList.add('active-city');
+          // update live stats shown (just demo, change numbers)
+          const countSpan = this.querySelector('.city-stats-live');
+          if (countSpan) {
+            // simulate increment
+            let old = parseInt(countSpan.innerText) || 0;
+            old = old + 3; // fake increase
+            countSpan.innerText = old;
+          }
+          // optionally change driver online count
+          if (this.dataset.city === 'jhb') onlineCountSpan.innerText = '187';
+          else if (this.dataset.city === 'cpt') onlineCountSpan.innerText = '134';
+          else if (this.dataset.city === 'dur') onlineCountSpan.innerText = '93';
+          else if (this.dataset.city === 'pret') onlineCountSpan.innerText = '76';
+        });
+      });
+
+      // smooth scroll for anchor links (from old)
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === "#") return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // image fallback
+      document.querySelectorAll('.logo-img-wrapper img').forEach(img => {
+        img.addEventListener('error', function() {
+          this.style.display = 'none';
+          const icon = this.nextElementSibling;
+          if (icon && icon.classList.contains('fa-car')) {
+            icon.style.display = 'flex';
+          }
+        });
+      });
+
+      // extra: set default active price view
+      updatePrice();
+
+      // any leftover localstorage keys just in case (but signup page handles)
+    })();
   </script>
+  <!-- add empty style for off class -->
+  <style>
+    .driver-toggle-badge.off { background: #444; color: #ccc; }
+    .driver-toggle-badge { transition: 0.1s; user-select: none; }
+    .city-slider-item { transition: 0.15s; }
+  </style>
 </body>
 </html>
